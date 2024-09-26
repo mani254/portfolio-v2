@@ -18,4 +18,13 @@
 	.btn-1 {
 		@apply bg-dark text-white rounded-full py-1 px-4;
 	}
+	h3 {
+		@apply text-xl;
+	}
+	h4 {
+		@apply text-md;
+	}
+	h1 {
+		@apply text-3xl;
+	}
 }

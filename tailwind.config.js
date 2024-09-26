@@ -9,7 +9,8 @@ export default {
             quickSand: 'Quicksand'
          },
          colors: {
-            dark: ({ opacityValue }) => `rgba(45,45,45,${opacityValue})`
+            dark: ({ opacityValue }) => `rgba(45,45,45,${opacityValue})`,
+            shaded: ({ opacityValue }) => `rgba(246,245,250,${opacityValue})`,
          },
          container: {
             center: true,
@@ -29,7 +30,7 @@ export default {
             xl: '32px',
             '2xl': '48px',
             '3xl': '58px',
-            '4xl': '96px'
+            '4xl': '68px'
          },
       },
    },
