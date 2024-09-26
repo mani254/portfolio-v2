@@ -7,7 +7,7 @@ function Navbar() {
 	const [menuActive, setMenuActive] = useState(false);
 
 	return (
-		<nav className="container flex items-center justify-between pt-2 fixed w-full top-0 left-1/2 -translate-x-1/2">
+		<nav className="container flex items-center justify-between pt-2 fixed w-full top-0 left-1/2 -translate-x-1/2 z-10">
 			<div className="logo w-[60px] h-[60px] p-2 glass-effect rounded-full">
 				<NavLink>
 					<img className="" src={logoSvg} alt="Manidev-developer-logo" />

@@ -11,6 +11,7 @@ export default {
          colors: {
             dark: ({ opacityValue }) => `rgba(45,45,45,${opacityValue})`,
             shaded: ({ opacityValue }) => `rgba(246,245,250,${opacityValue})`,
+            'lavendar-gray': "#DBDDE2",
          },
          container: {
             center: true,
@@ -26,7 +27,7 @@ export default {
             xs: '14px',
             sm: '16px',
             md: '18px',
-            lg: '24px',
+            lg: '22px',
             xl: '32px',
             '2xl': '48px',
             '3xl': '58px',

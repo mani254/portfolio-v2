@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 
 import "./App.css";
 import Hero from "./components/Hero";
+import About from "./components/About";
 
 export const MobileContext = React.createContext();
 
@@ -21,6 +22,8 @@ function App() {
 			<MobileContext.Provider value={{ mobile }}>
 				<Navbar />
 				<Hero />
+				<About />
+				<div className="h-screen"></div>
 			</MobileContext.Provider>
 		</SmoothScroll>
 	);

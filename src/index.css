@@ -16,7 +16,7 @@
 		@apply font-semibold;
 	}
 	.btn-1 {
-		@apply bg-dark text-white rounded-full py-1 px-4;
+		@apply bg-dark text-white rounded-full py-1 px-5;
 	}
 	h3 {
 		@apply text-xl;
