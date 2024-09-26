@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	* {
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		@apply text-dark font-quickSand font-medium;
+	}
+	a {
+		cursor: pointer;
+	}
+	nav * {
+		@apply font-semibold;
+	}
+	.btn-1 {
+		@apply bg-dark text-white rounded-full py-1 px-4;
+	}
+}
