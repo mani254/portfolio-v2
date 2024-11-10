@@ -64,7 +64,7 @@ function About() {
 				trigger: scrollingDivsRef.current,
 				start: "top 80%",
 				end: "bottom bottom",
-				scrub: 1.5,
+				scrub: 2,
 				// markers: true,
 			},
 		});

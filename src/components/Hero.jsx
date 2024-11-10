@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { instagram, linkedin, twitter, github, discord, youtube } from "../utils";
 import { bannerBackground, bannerVideo } from "../utils";
+import SplitType from "split-type";
 
 function Hero() {
 	const [videoLoaded, setVideoLoaded] = useState(false);
 	const [videoSrc, setVideoSrc] = useState(null);
 	const videoRef = useRef(null);
+
+	const titleRef = useRef(null);
+	const textRef = useRef(null);
+	const headingRef = useRef(null);
 
 	useEffect(() => {
 		if (videoSrc === null) {
@@ -26,6 +31,8 @@ function Hero() {
 		}
 	}, [videoSrc]);
 
+	useEffect(() => {}, []);
+
 	return (
 		<section className="container flex pt-[68px] h-screen max-h-[850px]">
 			<div className="min-w-12 h-full flex gap-5 flex-col items-center justify-between  ml-[6px] py-5">
@@ -37,22 +44,22 @@ function Hero() {
 					<span className="h-20 w-[1.5px] bg-dark block rounded-full"></span>
 				</div>
 				<div className="flex flex-col gap-3">
-					<a href="#">
+					<a href="https://github.com/mani254" target="_blank">
 						<img className="w-7" src={github} alt="github svg icon" />
 					</a>
-					<a href="#">
+					<a href="https://www.linkedin.com/in/sai0421/" target="_blank">
 						<img className="w-7" src={linkedin} alt="linkedin svg icon" />
 					</a>
-					<a href="#">
+					{/* <a href="#">
 						<img className="w-7" src={discord} alt="discord svg icon" />
-					</a>
-					<a href="#">
+					</a> */}
+					<a href="https://www.instagram.com/code_addict21/" target="_blank">
 						<img className="w-7" src={instagram} alt="instagram svg icon" />
 					</a>
-					<a href="#">
+					<a href="https://x.com/Manikanta_425" target="_blank">
 						<img className="w-7" src={twitter} alt="twitter svg icon" />
 					</a>
-					<a href="#">
+					<a href="https://www.youtube.com/channel/UCCdkYdNdJYuyQx_ky5GTvYg" target="_blank">
 						<img className="w-7" src={youtube} alt="youtube svg icon" />
 					</a>
 				</div>
@@ -62,11 +69,15 @@ function Hero() {
 					<div className="w-full h-full relative rounded-3xl overflow-hidden border-b  border-white pt-20 bg-shaded">{videoSrc ? <video src={videoSrc} autoPlay loop muted className={`w-full h-full object-cover object-center transition-opacity ${videoLoaded ? "block" : "hidden"}`} ref={videoRef} /> : <img src={bannerBackground} alt="Banner" loading="lazy" className={`w-full h-full object-cover object-center ${videoLoaded ? "hidden" : "block"}`} />}</div>
 				</div>
 				<div className="absolute top-12 left-12">
-					<h3>I am Sai Manikanta</h3>
+					<h3 ref={titleRef}>I am Sai Manikanta</h3>
 					<h4 className="mt-3 py-1 px-5 rounded-full border border-dark inline-block">Web Developer</h4>
 				</div>
-				<h1 className="stroke-text text-4xl w-full font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">MERN Stack Developer</h1>
-				<p className="absolute right-12 bottom-12 w-full max-w-[364px] font-medium text-md">I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.</p>
+				<h1 className="stroke-text text-4xl w-full font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center" ref={headingRef}>
+					MERN Stack Developer
+				</h1>
+				<p className="absolute right-12 bottom-12 w-full max-w-[364px] font-medium text-md" ref={textRef}>
+					I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.
+				</p>
 			</div>
 		</section>
 	);
