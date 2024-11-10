@@ -4,7 +4,7 @@ import SmoothScroll from "./components/smoothScroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 
 import "./App.css";
 // import Hero from "./components/Hero";
@@ -37,7 +37,7 @@ function App() {
 		<SmoothScroll>
 			<MobileContext.Provider value={isMobile}>
 				<Cursor />
-				<Navbar />
+				{/* <Navbar /> */}
 				<Routes>
 					<Route path="/" element={<Maintenance />} />
 					<Route path="*" element={<NotFound />} />
