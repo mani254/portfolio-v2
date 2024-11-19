@@ -10,9 +10,11 @@ export default {
          },
          colors: {
             dark: ({ opacityValue }) => `rgba(45,45,45,${opacityValue})`,
+            'dark-1': ({ opacityValue }) => `rgba(52,52,52,${opacityValue})`,
             shaded: ({ opacityValue }) => `rgba(246,245,250,${opacityValue})`,
             'lavendar-gray': "#DBDDE2",
          },
+
          container: {
             center: true,
             padding: {
@@ -24,9 +26,10 @@ export default {
             '3xl': '1560px'
          },
          fontSize: {
-            xs: '14px',
+            xxs: '14px',
+            xs: '15px',
             sm: '16px',
-            md: '18px',
+            md: '17px',
             lg: '22px',
             xl: '32px',
             '2xl': '48px',

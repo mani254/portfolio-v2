@@ -7,25 +7,28 @@ function Navbar() {
 	const [menuActive, setMenuActive] = useState(false);
 
 	return (
-		<nav className="container flex items-center justify-between pt-2 fixed w-full top-0 left-1/2 -translate-x-1/2 z-10">
+		<nav className="container flex items-center justify-between pt-2 sticky top-0 z-10">
 			<div className="logo w-[60px] h-[60px] p-2 glass-effect rounded-full">
 				<NavLink>
 					<img className="" src={logoSvg} alt="Manidev-developer-logo" />
 				</NavLink>
 			</div>
 
-			<ul className="flex items-center gap-5 glass-effect py-2 px-6 rounded-full font-semibold ml-[80px]">
+			<ul className="hidden md:flex items-center gap-5 glass-effect py-2 px-6 rounded-full font-semibold ml-[80px] ">
 				<li>
-					<NavLink to="/home">Home</NavLink>
+					<NavLink to="/">Home</NavLink>
 				</li>
 				<li>
-					<NavLink to="/home">Services</NavLink>
+					<NavLink to="/about">About</NavLink>
 				</li>
 				<li>
-					<NavLink to="/home">About</NavLink>
+					<NavLink to="/services">Services</NavLink>
 				</li>
 				<li>
-					<NavLink to="/home">Blogs</NavLink>
+					<NavLink to="/services">Projects</NavLink>
+				</li>
+				<li>
+					<NavLink to="/blogs">Blogs</NavLink>
 				</li>
 			</ul>
 

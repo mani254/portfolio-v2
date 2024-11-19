@@ -19,7 +19,7 @@ const SmoothScroll = ({ children }) => {
 
 	return (
 		<ReactLenis root ref={lenisRef} autoRaf={false}>
-			{children}
+			<main>{children}</main>
 		</ReactLenis>
 	);
 };

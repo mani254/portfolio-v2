@@ -4,11 +4,12 @@ import SmoothScroll from "./components/smoothScroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 
 import "./App.css";
-// import Hero from "./components/Hero";
-// import About from "./components/About";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import AboutPage from "./pages/AboutPage";
 import Cursor from "./components/Cursor";
 
 import { Route, Routes } from "react-router-dom";
@@ -37,13 +38,14 @@ function App() {
 		<SmoothScroll>
 			<MobileContext.Provider value={isMobile}>
 				<Cursor />
-				{/* <Navbar /> */}
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<Maintenance />} />
+					<Route path="/about" element={<AboutPage />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
-				{/* <Hero />
-				<About /> */}
+				{/* <Hero /> */}
+				{/* <About /> */}
 				{/* <div className="h-screen"></div> */}
 			</MobileContext.Provider>
 		</SmoothScroll>
