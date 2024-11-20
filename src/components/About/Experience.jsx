@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { freelancing, webomindapps, githubFill, instagramMobile, instagramColoured, instagramFilled, cartoonImage, instagram } from "../../utils";
+import { socialMedia } from "../../utils";
+
+import gsap from "gsap";
 
 const experiences = [
 	{
@@ -10,7 +13,7 @@ const experiences = [
 			to: "July 2024",
 		},
 		designation: "Web Designer",
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, cum quo fugiat doloremque  officia corrupti voluptatibus totam blanditiis, laboriosam, doloribus quod corporis. Quidem ab soluta consectetur.",
+		description: "Contributed to creating visually appealing and user-friendly website designs. Collaborated with cross-functional teams to deliver projects tailored to client requirements, ensuring seamless user experiences and adherence to industry standards.",
 	},
 	{
 		image: freelancing,
@@ -20,28 +23,76 @@ const experiences = [
 			to: "Present",
 		},
 		designation: "Web Development Services",
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, cum quo fugiat doloremque dignissimos ibus totam blanditiis, laboriosam, doloribus quod corporis. Quidem ab soluta consectetur.",
+		description: "Provided end-to-end web development solutions to clients, focusing on building robust and scalable websites. Specialized in delivering custom features and optimizing websites for performance and usability, showcasing expertise in both front-end and back-end development.",
 	},
-];
-
-const socialMedia = [
-	{ image: instagram, alt: "", link: "" },
-	{ image: instagram, alt: "", link: "" },
-	{ image: instagram, alt: "", link: "" },
-	{ image: instagram, alt: "", link: "" },
-	{ image: instagram, alt: "", link: "" },
-	{ image: instagram, alt: "", link: "" },
 ];
 
 const leftSocials = socialMedia.slice(0, 3);
 const rightSocials = socialMedia.slice(3);
 
 function Experience() {
+	const expRef = useRef(null);
+	const expWrapper = useRef(null);
+	const instaRef = useRef(null);
+	const gitRef = useRef(null);
+	const socialRef = useRef(null);
+
+	useEffect(() => {
+		if (!expRef.current || !instaRef.current || !gitRef.current || !socialRef.current) return;
+
+		const scaleUp = gsap.fromTo(
+			[instaRef.current, gitRef.current],
+			{ scale: 0.5, opacity: 0 },
+			{
+				scale: 1,
+				opacity: 1,
+				ease: "power3.out",
+				duration: 1,
+				scrollTrigger: {
+					trigger: instaRef.current,
+					toggleActions: "play none none reverse",
+					start: "top 85%",
+				},
+			}
+		);
+
+		const socialAnimation = gsap.fromTo(
+			socialRef.current,
+			{ opacity: 0, y: 50 },
+			{
+				opacity: 1,
+				y: 0,
+				ease: "power2.out",
+				duration: 0.8,
+				scrollTrigger: {
+					trigger: socialRef.current,
+					toggleActions: "play none none reverse",
+					start: "top 85%",
+				},
+			}
+		);
+
+		const expTimeline = gsap.timeline({
+			scrollTrigger: {
+				trigger: expRef.current,
+				start: "top 85%",
+				toggleActions: "play none none reverse",
+			},
+		});
+		expTimeline.fromTo(expRef.current, { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 });
+		expTimeline.fromTo(expWrapper.current.children, { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.5, stagger: 0.08 });
+
+		return () => {
+			scaleUp.kill();
+			socialAnimation.kill();
+		};
+	}, [expRef, instaRef, gitRef, socialRef]);
+
 	return (
 		<section className="about-section flex flex-col md:flex-row gap-6">
-			<div className="about-part md:w-2/3 w-full">
+			<div className="about-part md:w-2/3 w-full" ref={expRef}>
 				<h2 className="mb-6">My Experience</h2>
-				<div>
+				<div ref={expWrapper}>
 					{experiences.map((exp, index) => {
 						return (
 							<React.Fragment key={index}>
@@ -72,7 +123,17 @@ function Experience() {
 			</div>
 			<div className="md:w-1/3 space-y-6 w-full">
 				<div className="flex flex-row md:flex-col lg:flex-row gap-6">
-					<div className=" w-1/2 md:w-full aspect-square overflow-hidden rounded-3xl bg-dark bg-opacity-95 relative cursor-pointer">
+					<div className=" w-1/2 md:w-full aspect-square overflow-hidden rounded-3xl bg-gray-200 relative cursor-pointer group " ref={instaRef}>
+						<img className="w-full" src={instagramMobile} alt="freelancer cartoon image" />
+						<div className={` rounded-xl w-10 h-10 shadow-sm bg-white p-1 absolute top-2 right-2`}>
+							<img className="w-full h-full" src={instagramColoured} alt="instagram coloured svg icon" />
+						</div>
+						<div className="absolute w-full h-full bg-dark bg-opacity-0 inset-0 flex flex-col items-center justify-center gap-3 group-hover:bg-opacity-70 transition-all duration-400">
+							<img src={instagramFilled} className="scale-[1.4] rotate-45 opacity-0 group-hover:rotate-0 group-hover:scale-[1] group-hover:opacity-100 transition-all duration-200 delay-150" alt="insgram filled icon" />
+							<h5 className="text-center text-white scale-[1.3] opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-[1] transition-all duration-200 delay-200">Follow Me On Instagram</h5>
+						</div>
+					</div>
+					<div className=" w-1/2 md:w-full aspect-square overflow-hidden rounded-3xl bg-dark bg-opacity-95 relative cursor-pointer" ref={gitRef}>
 						<h4 className="absolute z-20 text-white bottom-3 left-1/2 -translate-x-1/2 text-opacity-80 font-bold text-center">Github</h4>
 						<div className="loader">
 							<div className="box">
@@ -84,19 +145,9 @@ function Experience() {
 							<div className="box"></div>
 						</div>
 					</div>
-					<div className=" w-1/2 md:w-full aspect-square overflow-hidden rounded-3xl bg-gray-200 relative cursor-pointer group ">
-						<img className="w-full" src={instagramMobile} alt="freelancer cartoon image" />
-						<div className={` rounded-xl w-10 h-10 shadow-sm bg-white p-1 absolute top-2 right-2`}>
-							<img className="w-full h-full" src={instagramColoured} alt="instagram coloured svg icon" />
-						</div>
-						<div className="absolute w-full h-full bg-dark bg-opacity-0 inset-0 flex flex-col items-center justify-center gap-3 group-hover:bg-opacity-70 transition-all duration-400">
-							<img src={instagramFilled} className="scale-[1.4] rotate-45 opacity-0 group-hover:rotate-0 group-hover:scale-[1] group-hover:opacity-100 transition-all duration-200 delay-150" alt="insgram filled icon" />
-							<h5 className="text-center text-white scale-[1.3] opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-[1] transition-all duration-200 delay-200">Follow Me On Instagram</h5>
-						</div>
-					</div>
 				</div>
-				<div className="about-part md:hidden lg:block">
-					<h2 className="text-center">Social Media Links</h2>
+				<div className="about-part md:hidden lg:block" ref={socialRef}>
+					<h2 className="text-center pb-6">Social Media Links</h2>
 					<div className="flex mt-3 gap-3">
 						<div className="w-1/5 flex flex-col justify-between ">
 							{leftSocials.map((social, index) => (
@@ -127,13 +178,13 @@ function SingleSocialMedia({ social, right }) {
 	return (
 		<div className={`max-w-9 aspect-square ${right ? "odd:translate-x-2 even:-translate-x-2" : "odd:-translate-x-2 even:translate-x-2"} hover:scale-110 cursor-pointer transition-transform duration-300`}>
 			<div
-				className="floating-icon"
+				className="floating-icon "
 				style={{
 					animationDuration: duration,
 					animationDelay: delay,
 					"--float-distance": distance,
 				}}>
-				<img className="max-w-9" src={social.image} alt={social.alt} />
+				<img className="max-w-7 w-7" src={social.image} alt={social.alt} />
 			</div>
 		</div>
 	);

@@ -7,14 +7,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./components/Navbar";
 
 import "./App.css";
-import Hero from "./components/Hero";
-import About from "./components/About";
 import AboutPage from "./pages/AboutPage";
 import Cursor from "./components/Cursor";
 
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Maintenance from "./pages/Maintainance";
+import { HelmetProvider } from "react-helmet-async";
 export const MobileContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +23,7 @@ function App() {
 
 	useEffect(() => {
 		function handleResize() {
-			window.innerWidth > 600 ? setIsMobile(false) : setIsMobile(true);
+			window.innerWidth > 768 ? setIsMobile(false) : setIsMobile(true);
 		}
 		window.addEventListener("resize", handleResize);
 		handleResize();
@@ -39,14 +38,13 @@ function App() {
 			<MobileContext.Provider value={isMobile}>
 				<Cursor />
 				<Navbar />
-				<Routes>
-					<Route path="/" element={<Maintenance />} />
-					<Route path="/about" element={<AboutPage />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-				{/* <Hero /> */}
-				{/* <About /> */}
-				{/* <div className="h-screen"></div> */}
+				<HelmetProvider>
+					<Routes>
+						<Route path="/" element={<Maintenance />} />
+						<Route path="/about" element={<AboutPage />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</HelmetProvider>
 			</MobileContext.Provider>
 		</SmoothScroll>
 	);

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
-import { css, expressjs, figma, html, js, mysql, nextjs, python, reactjs, redux, tailwind } from "../../utils";
+import { css, expressjs, figma, fingers, git, html, js, mongodb, mysql, nextjs, python, reactjs, redux, tailwind, vscode, nodejs } from "../../utils";
 import gsap from "gsap";
 
 const technologies = [
@@ -8,21 +8,25 @@ const technologies = [
 	{ title: "Python", image: python, alt: "Python logo" },
 	{ title: "React.js", image: reactjs, alt: "React.js logo" },
 	{ title: "Redux", image: redux, alt: "Redux logo" },
-	{ title: "Node.js", image: expressjs, alt: "Node.js logo" },
+	{ title: "Node.js", image: nodejs, alt: "Node.js logo" },
 	{ title: "HTML", image: html, alt: "HTML logo" },
 	{ title: "CSS", image: css, alt: "CSS logo" },
 	{ title: "Express.js", image: expressjs, alt: "Express.js logo" },
-	{ title: "MongoDB", image: tailwind, alt: "MongoDB logo" },
+	{ title: "MongoDB", image: mongodb, alt: "MongoDB logo" },
 	{ title: "Next.js", image: nextjs, alt: "Next.js logo" },
 	{ title: "MySQL", image: mysql, alt: "MySQL logo" },
 	{ title: "Tailwind CSS", image: tailwind, alt: "Tailwind CSS logo" },
 	{ title: "Figma", image: figma, alt: "Figma logo" },
-	{ title: "GitHub", image: figma, alt: "GitHub logo" },
-	{ title: "VS Code", image: figma, alt: "VS Code logo" },
+	{ title: "GitHub", image: git, alt: "GitHub logo" },
+	{ title: "VS Code", image: vscode, alt: "VS Code logo" },
 ];
 
 function Technologies() {
 	const rowRefs = useRef([]);
+
+	const techRef = useRef(null);
+	const gitRef = useRef(null);
+	const ctaRef = useRef(null);
 
 	useEffect(() => {
 		const initAnimations = () => {
@@ -66,9 +70,63 @@ function Technologies() {
 		};
 	}, [rowRefs]);
 
+	useEffect(() => {
+		if (!techRef.current || !gitRef.current || !ctaRef.current) return;
+		const techAnimation = gsap.fromTo(
+			techRef.current,
+			{ opacity: 0, y: 50 },
+			{
+				opacity: 1,
+				y: 0,
+				ease: "power2.out",
+				duration: 0.8,
+				scrollTrigger: {
+					trigger: techRef.current,
+					toggleActions: "play none none reverse",
+					start: "top 85%",
+				},
+			}
+		);
+		const gitAnimation = gsap.fromTo(
+			gitRef.current,
+			{ opacity: 0, y: 50 },
+			{
+				opacity: 1,
+				y: 0,
+				ease: "power2.out",
+				duration: 0.8,
+				scrollTrigger: {
+					trigger: gitRef.current,
+					toggleActions: "play none none reverse",
+					start: "top 85%",
+				},
+			}
+		);
+		const ctaAnimation = gsap.fromTo(
+			ctaRef.current,
+			{ opacity: 0, y: 50 },
+			{
+				opacity: 1,
+				y: 0,
+				ease: "power2.out",
+				duration: 0.8,
+				scrollTrigger: {
+					trigger: ctaRef.current,
+					toggleActions: "play none none reverse",
+					start: "top 85%",
+				},
+			}
+		);
+		return () => {
+			gitAnimation.kill();
+			ctaAnimation.kill();
+			techAnimation.kill();
+		};
+	}, [techRef, gitRef, ctaRef]);
+
 	return (
-		<section className="about-section flex gap-6">
-			<div className="about-part w-1/2 ">
+		<section className="about-section flex flex-col md:flex-row gap-6">
+			<div className="about-part w-full  md:w-1/2" ref={techRef}>
 				<h2 className="mb-1">My Tech Stack</h2>
 				<div className="overflow-visible relative">
 					{[technologies.slice(0, 5), technologies.slice(5, 10), technologies.slice(10, 15)].map((array, row) => {
@@ -97,18 +155,18 @@ function Technologies() {
 					<div className="absolute w-20 h-full top-0 -right-3 gradient-left"></div>
 				</div>
 			</div>
-			<div className="flex flex-col w-1/2 gap-6 ">
-				<div className="about-part ">
+			<div className="flex flex-col w-full md:w-1/2 gap-6 ">
+				<div className="about-part" ref={gitRef}>
 					<h2 className="mb-6">My Git Contributions</h2>
 					<GitHubActivity />
 				</div>
-				<div className="rounded-3xl p-5 bg-dark flex items-center justify-center relative overflow-hidden">
-					<img src="" alt="" />
-					<div>
-						<h2 className="text-white">Let's Work Together!</h2>
-						<h2 className="text-white">Send Me a Message</h2>
+				<div className="rounded-3xl p-5 bg-dark flex items-center justify-center relative overflow-hidden cursor-pointer gap-3 md:gap-6 hover:bg-gray-800" ref={ctaRef}>
+					<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
+					<div className="w-full">
+						<h4 className="text-white text-sm md:text-md text-center">Let's Work Together!</h4>
+						<h4 className="text-white text-sm md:text-md text-center">Send Me a Message</h4>
 					</div>
-					<div className="absolute"></div>
+					<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
 				</div>
 			</div>
 		</section>

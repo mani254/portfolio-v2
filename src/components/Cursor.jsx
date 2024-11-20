@@ -30,7 +30,7 @@ function Cursor() {
 		};
 	}, [isMobile]);
 
-	return <div className="w-3 h-3 bg-dark rounded-full absolute transform-x-[-50%] transform-y-[-50%] z-50 bg-opacity-80" ref={cursorRef}></div>;
+	return <div className="w-3 h-3 bg-dark rounded-full absolute transform-x-[-50%] transform-y-[-50%] z-50 bg-opacity-80" style={{ pointerEvents: "none" }} ref={cursorRef}></div>;
 }
 
 export default Cursor;
