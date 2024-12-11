@@ -6,6 +6,7 @@ import Experience from "../components/About/Experience";
 import Technologies from "../components/About/Technologies";
 
 import { Helmet } from "react-helmet-async";
+import AboutBlog from "../components/About/aboutBlog";
 
 function AboutPage() {
 	return (
@@ -25,12 +26,12 @@ function AboutPage() {
 				<meta name="twitter:description" content="Explore the journey, skills, and contributions of Manikanta, a professional developer and freelancer." />
 				<meta name="twitter:image" content="https://manidev.in/images/about-profile.webp" />
 			</Helmet>
-
 			<MainAbout />
 			<MoreAbout />
 			<TechEducation />
 			<Technologies />
 			<Experience />
+			<AboutBlog />
 		</div>
 	);
 }
