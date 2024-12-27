@@ -6,10 +6,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 function AboutBlog() {
 	return (
 		<section className="about-section">
-			<div className="flex gap-6">
+			<div className="flex flex-col md:flex-row  gap-6 mb-10">
 				{blogs.map((blog, index) => {
 					return (
-						<div className="about-part p-0 w-1/3 overflow-hidden relative group hover:shadow-xl">
+						<div className="about-part p-0 w-full lg:w-1/3 overflow-hidden relative group hover:shadow-xl">
 							<div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
 								<img className="absolute w-full h-full object-cover object-center" src={blog.image} alt={blog.title}></img>
 							</div>

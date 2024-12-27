@@ -3,27 +3,32 @@ import React, { useState, useEffect } from "react";
 import SmoothScroll from "./components/smoothScroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HelmetProvider } from "react-helmet-async";
 
 import Navbar from "./components/Navbar";
+import NotFound from "./pages/NotFound";
+import Cursor from "./components/Cursor";
 
 import "./App.css";
 import AboutPage from "./pages/AboutPage";
-import Cursor from "./components/Cursor";
+import HomePage from "./pages/HomePage";
 
 import { Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-import Maintenance from "./pages/Maintainance";
-import { HelmetProvider } from "react-helmet-async";
-export const MobileContext = React.createContext();
+export const AppContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-	const [isMobile, setIsMobile] = useState(true);
+	const [options, setOptions] = useState({
+		isMobile: true,
+		isNavDark: false,
+		isDark: false,
+	});
 
+	//useEffect to handle the reaize and set the isMobile in the options
 	useEffect(() => {
 		function handleResize() {
-			window.innerWidth > 768 ? setIsMobile(false) : setIsMobile(true);
+			window.innerWidth > 768 ? setOptions({ ...options, isMobile: false }) : setOptions({ ...options, isMobile: true });
 		}
 		window.addEventListener("resize", handleResize);
 		handleResize();
@@ -35,17 +40,17 @@ function App() {
 
 	return (
 		<SmoothScroll>
-			<MobileContext.Provider value={isMobile}>
+			<AppContext.Provider value={{ options, setOptions }}>
 				<Cursor />
 				<Navbar />
 				<HelmetProvider>
 					<Routes>
-						<Route path="/" element={<Maintenance />} />
+						<Route path="/" element={<HomePage />} />
 						<Route path="/about" element={<AboutPage />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</HelmetProvider>
-			</MobileContext.Provider>
+			</AppContext.Provider>
 		</SmoothScroll>
 	);
 }

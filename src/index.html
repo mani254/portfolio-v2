@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Responsive Canvas Animation</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+         overflow: hidden;
+      }
+
+      canvas {
+         display: block;
+      }
+   </style>
+</head>
+
+<body>
+   <canvas id="animatedCanvas"></canvas>
+
+   <script>
+      const canvas = document.getElementById("animatedCanvas");
+      const ctx = canvas.getContext("2d");
+
+      let particles = [];
+      const textLines = ["MERN Stack", "Developer"]; // Split the text manually into lines
+
+      // Adjust font size dynamically
+      function getFontSize() {
+         const baseSize = Math.min(window.innerWidth, window.innerHeight) / 8;
+         return Math.max(60, Math.min(baseSize, 190)); // Minimum font size: 60px, maximum: 190px
+      }
+
+      // Resize canvas dynamically
+      function resizeCanvas() {
+         canvas.width = window.innerWidth;
+         canvas.height = window.innerHeight;
+         createParticles();
+      }
+
+      // Particle class
+      class Particle {
+         constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.originX = x;
+            this.originY = y;
+            this.color = "#FFFFFF";
+            this.size = 1;
+            this.vx = 0;
+            this.vy = 0;
+         }
+
+         draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 1, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+         }
+
+         update() {
+            this.x += (this.originX - this.x) * 0.1;
+            this.y += (this.originY - this.y) * 0.1;
+            this.draw();
+         }
+
+         scatter() {
+            this.vx = (Math.random() - 0.5) * 100;
+            this.vy = (Math.random() - 0.5) * 100;
+            this.x += this.vx;
+            this.y += this.vy;
+         }
+
+         distort(x, y) {
+            const dx = this.x - x;
+            const dy = this.y - y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 50) {
+               const angle = Math.atan2(dy, dx);
+               this.x += Math.cos(angle) * 20;
+               this.y += Math.sin(angle) * 20;
+            }
+         }
+      }
+
+      function createParticles() {
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+         const fontSize = getFontSize();
+         ctx.font = `bold ${fontSize}px Arial`;
+         ctx.textAlign = "center";
+         ctx.fillStyle = "white";
+
+         const lineHeight = fontSize * 1.2; // Adjust line spacing
+         const totalHeight = textLines.length * lineHeight;
+         const startY = (canvas.height - totalHeight) / 2;
+
+         // Draw text lines
+         textLines.forEach((line, index) => {
+            const y = startY + index * lineHeight;
+            ctx.fillText(line, canvas.width / 2, y);
+         });
+
+         const textData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+         particles = [];
+
+         for (let y = 0; y < canvas.height; y += 4) {
+            for (let x = 0; x < canvas.width; x += 4) {
+               const index = (y * canvas.width + x) * 4;
+               if (textData[index + 3] > 128) {
+                  particles.push(new Particle(x, y));
+               }
+            }
+         }
+      }
+
+      function animateParticles() {
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+         particles.forEach(particle => particle.update());
+
+         requestAnimationFrame(animateParticles);
+      }
+
+      // Debounce function for resize
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+         clearTimeout(resizeTimeout);
+         resizeTimeout = setTimeout(resizeCanvas, 200);
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+         const rect = canvas.getBoundingClientRect();
+         const mouseX = e.clientX - rect.left;
+         const mouseY = e.clientY - rect.top;
+
+         particles.forEach(particle => particle.distort(mouseX, mouseY));
+      });
+
+      canvas.addEventListener("mouseenter", () => {
+         particles.forEach(particle => particle.scatter());
+      });
+
+      canvas.addEventListener("mouseleave", () => {
+         particles.forEach(particle => {
+            particle.vx = 0;
+            particle.vy = 0;
+         });
+      });
+
+      // Initialize canvas and particles
+      resizeCanvas();
+      animateParticles();
+   </script>
+</body>
+
+</html>

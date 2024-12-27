@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { instagram, linkedin, twitter, github, discord, youtube } from "../utils";
-import { bannerBackground, bannerVideo } from "../utils";
+import { instagram, linkedin, twitter, github, discord, youtube } from "../../utils";
+import { bannerBackground, bannerVideo } from "../../utils";
+import ParticleText from "../Utils/ParticleText";
 import SplitType from "split-type";
+import gsap from "gsap";
 
 function Hero() {
 	const [videoLoaded, setVideoLoaded] = useState(false);
@@ -10,7 +12,6 @@ function Hero() {
 
 	const titleRef = useRef(null);
 	const textRef = useRef(null);
-	const headingRef = useRef(null);
 
 	useEffect(() => {
 		if (videoSrc === null) {
@@ -31,11 +32,29 @@ function Hero() {
 		}
 	}, [videoSrc]);
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		if (!titleRef.current || !textRef.current) return;
+
+		let splitTitle = null;
+		let splitPara = null;
+
+		const tl = gsap.timeline();
+
+		splitTitle = new SplitType(titleRef.current, { types: "words", tagName: "span" });
+		splitPara = new SplitType(textRef.current, { types: "words", tagName: "span" });
+
+		tl.fromTo(splitTitle.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 });
+
+		tl.fromTo(splitPara.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 }, "+=0.5");
+
+		return () => {
+			tl.kill();
+		};
+	}, [titleRef, textRef]);
 
 	return (
-		<section className="container flex pt-[68px] h-screen max-h-[850px]">
-			<div className="min-w-12 h-full flex gap-5 flex-col items-center justify-between  ml-[6px] py-5">
+		<section className="container flex max-h-[850px]" style={{ height: "calc(100vh - 75px)" }}>
+			<div className="min-w-12 h-full sm:flex gap-5 flex-col items-center justify-between  ml-[6px] py-5 hidden">
 				<div>
 					<span className="h-20 w-[1.5px] bg-dark block rounded-full"></span>
 					<div className="relative min-h-32">
@@ -64,18 +83,24 @@ function Hero() {
 					</a>
 				</div>
 			</div>
-			<div className="w-full relative">
-				<div className="w-full h-full pl-2 py-2">
+			<div className="w-full relative overflow-hidden">
+				<div className="w-full h-full  py-2">
 					<div className="w-full h-full relative rounded-3xl overflow-hidden border-b  border-white pt-20 bg-shaded">{videoSrc ? <video src={videoSrc} autoPlay loop muted className={`w-full h-full object-cover object-center transition-opacity ${videoLoaded ? "block" : "hidden"}`} ref={videoRef} /> : <img src={bannerBackground} alt="Banner" loading="lazy" className={`w-full h-full object-cover object-center ${videoLoaded ? "hidden" : "block"}`} />}</div>
 				</div>
-				<div className="absolute top-12 left-12">
-					<h3 ref={titleRef}>I am Sai Manikanta</h3>
-					<h4 className="mt-3 py-1 px-5 rounded-full border border-dark inline-block">Web Developer</h4>
+				<div className="absolute top-12 left-1/2 -translate-x-1/2  lg:left-12 lg:-translate-x-0">
+					<h3 ref={titleRef} className="text-lg sm:text-xl font-semibold text-zinc-500 text-center lg:text-start" aria-label="I am Sai Manikanta">
+						I am <br />
+						<span class="whitespace-nowrap">Sai Manikanta</span>
+					</h3>
+					{/* <h4 className="mt-3 py-1 px-5 rounded-full border border-dark inline-block">Web Developer</h4> */}
 				</div>
-				<h1 className="stroke-text text-4xl w-full font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center" ref={headingRef}>
+				{/* <div className="stroke-text text-4xl w-full font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center" ref={headingRef}>
 					MERN Stack Developer
-				</h1>
-				<p className="absolute right-12 bottom-12 w-full max-w-[364px] font-medium text-md" ref={textRef}>
+				</div> */}
+				<div className="text-4xl w-full min-h-60  font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+					<ParticleText textLines={["MERN Stack", "Developer"]} fontSizeMultiplier={10} minFontSize={48} maxFontSize={68} particleColor="#8f8f8f" />
+				</div>
+				<p className="absolute right-1/2 translate-x-1/2 lg:right-12 lg:translate-x-0  bottom-12 w-full max-w-[364px] font-medium text-md text-center lg:text-start" ref={textRef} aria-label="I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.">
 					I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.
 				</p>
 			</div>

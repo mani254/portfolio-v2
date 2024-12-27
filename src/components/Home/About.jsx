@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 
-import { about1, about2, about3, about4, about5, about6, profile } from "../utils";
+import { about1, about2, about3, about4, about5, about6, profile } from "../../utils";
 
 function About() {
 	const svgRef = useRef(null);
@@ -52,8 +52,6 @@ function About() {
 				start: "top 80%",
 				end: "top 40%",
 				scrub: 1.5,
-				// markers: true,
-				// onLeave: () => tl2.play(),
 			},
 		});
 
@@ -65,7 +63,6 @@ function About() {
 				start: "top 80%",
 				end: "bottom bottom",
 				scrub: 2,
-				// markers: true,
 			},
 		});
 
@@ -106,27 +103,40 @@ function About() {
 			top: (index) => topValues[index] || 0,
 			scrollTrigger: {
 				trigger: aboutRef.current,
-				start: "top 80px",
+				start: "top -3px",
 				end: "+=700",
 				scrub: true,
 				pin: pinStatus,
-				// markers: true,
+				pinSpacing: true,
+				// onEnter: () => {
+				// 	console.log("animation started");
+				// },
+				// onLeave: () => {
+				// 	console.log("animation ended");
+				// },
 			},
 		});
+
+		// const handleResize = () => {
+		// 	ScrollTrigger.refresh();
+		// };
+
+		// window.addEventListener("resize", handleResize);
 
 		return () => {
 			tl1.kill();
 			tl2.kill();
+			// window.removeEventListener("resize", handleResize);
 		};
-	}, [aboutRef, scrollingDivsRef, window.innerHeight]);
+	}, [aboutRef, scrollingDivsRef]);
 
 	return (
-		<section className="relative" ref={aboutRef}>
-			<div className="min-h-[700px] flex flex-col">
+		<section className="relative w-full" ref={aboutRef}>
+			<div className="min-h-[700px] flex flex-col w-full">
 				<svg width="100%" height="100%" viewBox="0 0 1533 302" fill="none" xmlns="http://www.w3.org/2000/svg" ref={svgRef}>
-					<path className="fill-lavendar-gray" d="M0 292.999V0C162.5 355.5 1351 373.5 1536 0.499171V292.001L0 292.999Z" />
+					<path className="fill-gray-950" d="M0 292.999V0C162.5 355.5 1351 373.5 1536 0.499171V292.001L0 292.999Z" />
 				</svg>
-				<div className="about-bg bg-lavendar-gray w-full h-full flex-1 -mt-1"></div>
+				<div className="about-bg bg-gray-950 w-full h-full flex-1 -mt-1"></div>
 			</div>
 			<div className="scrolling-divs absolute w-full h-full top-0 right-0 overflow-hidden" ref={scrollingDivsRef}>
 				<div className="w-[160px] bg-lavendar-gray bg-opacity-30 absolute left-[10%] top-[10%] shadow-gray-400 shadow-md rounded-xl overflow-hidden">

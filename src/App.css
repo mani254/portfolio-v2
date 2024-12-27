@@ -12,10 +12,24 @@
 	width: 80%;
 }
 
+.mobile-menu {
+	clip-path: circle(5px at 100% 0);
+	will-change: clip-path;
+}
+
+.cursor {
+	pointer-events: none;
+	mix-blend-mode: normal;
+}
+
+.has-c-over {
+	cursor: none;
+}
+
 /* ---------------------Effects------------------- */
 
 .glass-effect {
-	background-color: rgba(209, 213, 209, 0.2);
+	background-color: rgba(209, 213, 209, 0.1);
 	backdrop-filter: blur(12px);
 }
 

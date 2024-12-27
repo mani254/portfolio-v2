@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import { about1, about2, about3, about4, about5, about6 } from "../../utils";
 import gsap from "gsap";
 
-import { MobileContext } from "../../App";
+import { AppContext } from "../../App";
 
 const projects = [
 	{
@@ -80,7 +80,8 @@ function ScrollingProjects() {
 	const firstChild = useRef(null);
 	const secondChild = useRef(null);
 
-	const isMobile = useContext(MobileContext);
+	const { options } = useContext(AppContext);
+	const { isMobile } = options;
 
 	useEffect(() => {
 		if (!firstChild.current || !secondChild.current) return;

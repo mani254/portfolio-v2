@@ -20,11 +20,11 @@ function AboutPage() {
 				<meta property="og:description" content="Explore the journey, skills, and contributions of Manikanta, a professional developer and freelancer." />
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content="https://manidev.in/about" />
-				<meta property="og:image" content="https://manidev.in/images/about-profile.webp" />
+				<meta property="og:image" content="https://manidev.in/images/home-hero-image.webp" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="About Manikanta | Developer & Freelancer" />
 				<meta name="twitter:description" content="Explore the journey, skills, and contributions of Manikanta, a professional developer and freelancer." />
-				<meta name="twitter:image" content="https://manidev.in/images/about-profile.webp" />
+				<meta name="twitter:image" content="https://manidev.in/images/home-hero-image.webp" />
 			</Helmet>
 			<MainAbout />
 			<MoreAbout />
