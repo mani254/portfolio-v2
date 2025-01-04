@@ -1,27 +1,28 @@
 import React, { useContext, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { AppContext } from "../App";
+import { useLocation } from "react-router-dom";
 
 function Cursor() {
 	const { options } = useContext(AppContext);
 	const { isMobile } = options;
 	const cursorRef = useRef(null);
 	const textRef = useRef(null);
-	// Helper to update cursor styles
+	const location = useLocation();
+
 	const updateCursorStyles = (width, height, mixBlendMode, backgroundColor, duration = 0.25) => {
 		if (cursorRef.current) {
 			gsap.to(cursorRef.current, {
 				width,
 				height,
 				duration,
-				ease: "power3.out",
+				ease: "power2.out",
 			});
 			cursorRef.current.style.mixBlendMode = mixBlendMode;
 			cursorRef.current.style.backgroundColor = backgroundColor;
 		}
 	};
 
-	// Mouse move handler
 	const handleMouseMove = (event) => {
 		const x = event.pageX;
 		const y = event.pageY;
@@ -75,12 +76,10 @@ function Cursor() {
 		});
 	};
 
-	// Mouse enter handler
 	const handleMouseEnter = () => {
 		updateCursorStyles("50px", "50px", "difference", "white");
 	};
 
-	// Mouse leave handler
 	const handleMouseLeave = () => {
 		updateCursorStyles("12px", "12px", "normal", "rgb(45,45,45)");
 	};
@@ -90,8 +89,9 @@ function Cursor() {
 		if (textRef.current) {
 			textRef.current.textContent = text;
 		}
-		updateCursorStyles("80px", "80px", "normal", "black");
+		updateCursorStyles("65px", "65px", "normal", "black");
 		textRef.current.style.color = "white";
+		textRef.current.style.fontSize = "12px";
 	};
 
 	const handleTextCursorLeave = () => {
@@ -104,10 +104,8 @@ function Cursor() {
 	useEffect(() => {
 		if (isMobile) return;
 
-		// Add mousemove listener
 		document.addEventListener("mousemove", handleMouseMove);
 
-		// Add hover listeners for elements with has-c-over class
 		const hoverElements = document.querySelectorAll(".has-c-over");
 		hoverElements.forEach((el) => {
 			el.addEventListener("mouseenter", handleMouseEnter);
@@ -120,7 +118,6 @@ function Cursor() {
 			el.addEventListener("mouseleave", handleTextCursorLeave);
 		});
 
-		// Cleanup listeners on component unmount
 		return () => {
 			document.removeEventListener("mousemove", handleMouseMove);
 			hoverElements.forEach((el) => {
@@ -132,7 +129,7 @@ function Cursor() {
 				el.removeEventListener("mouseleave", handleTextCursorLeave);
 			});
 		};
-	}, [isMobile]);
+	}, [isMobile, location]);
 
 	return (
 		<div

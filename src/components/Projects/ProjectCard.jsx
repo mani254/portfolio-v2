@@ -37,8 +37,8 @@ function ProjectCard({ title, description, link, image, index }) {
 	}, [cardRef, imageRef]);
 
 	return (
-		<div ref={cardRef} className="shadow-lg overflow-hidden rounded-xl  text-cursor" data-text="View Project">
-			<div className="relative h-[300px] overflow-hidden bg-gray-500">
+		<div ref={cardRef} className="shadow-lg overflow-hidden rounded-xl">
+			<div className="relative h-[300px] overflow-hidden bg-gray-500  text-cursor" data-text="View Project">
 				<img ref={imageRef} src={image} alt="Project" className="w-full h-full scale-150 object-cover object-center" />
 			</div>
 			<div className="p-4 py-6">
