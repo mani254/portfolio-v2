@@ -31,7 +31,7 @@ function AboutPage() {
 			<TechEducation />
 			<Technologies />
 			<Experience />
-			<AboutBlog />
+			{/* <AboutBlog /> */}
 		</div>
 	);
 }

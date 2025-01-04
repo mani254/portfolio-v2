@@ -22,7 +22,8 @@
 	mix-blend-mode: normal;
 }
 
-.has-c-over {
+.has-c-over,
+.text-cursor {
 	cursor: none;
 }
 

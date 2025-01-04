@@ -6,7 +6,7 @@ function Cursor() {
 	const { options } = useContext(AppContext);
 	const { isMobile } = options;
 	const cursorRef = useRef(null);
-
+	const textRef = useRef(null);
 	// Helper to update cursor styles
 	const updateCursorStyles = (width, height, mixBlendMode, backgroundColor, duration = 0.25) => {
 		if (cursorRef.current) {
@@ -82,7 +82,23 @@ function Cursor() {
 
 	// Mouse leave handler
 	const handleMouseLeave = () => {
-		updateCursorStyles("10px", "10px", "normal", "rgb(45,45,45)");
+		updateCursorStyles("12px", "12px", "normal", "rgb(45,45,45)");
+	};
+
+	const handleTextCursorEnter = (event) => {
+		const text = event.target.getAttribute("data-text");
+		if (textRef.current) {
+			textRef.current.textContent = text;
+		}
+		updateCursorStyles("80px", "80px", "normal", "black");
+		textRef.current.style.color = "white";
+	};
+
+	const handleTextCursorLeave = () => {
+		if (textRef.current) {
+			textRef.current.textContent = "";
+		}
+		updateCursorStyles("12px", "12px", "normal", "black");
 	};
 
 	useEffect(() => {
@@ -98,6 +114,12 @@ function Cursor() {
 			el.addEventListener("mouseleave", handleMouseLeave);
 		});
 
+		const textCursorElements = document.querySelectorAll(".text-cursor");
+		textCursorElements.forEach((el) => {
+			el.addEventListener("mouseenter", handleTextCursorEnter);
+			el.addEventListener("mouseleave", handleTextCursorLeave);
+		});
+
 		// Cleanup listeners on component unmount
 		return () => {
 			document.removeEventListener("mousemove", handleMouseMove);
@@ -105,21 +127,27 @@ function Cursor() {
 				el.removeEventListener("mouseenter", handleMouseEnter);
 				el.removeEventListener("mouseleave", handleMouseLeave);
 			});
+			textCursorElements.forEach((el) => {
+				el.removeEventListener("mouseenter", handleTextCursorEnter);
+				el.removeEventListener("mouseleave", handleTextCursorLeave);
+			});
 		};
 	}, [isMobile]);
 
 	return (
 		<div
-			className="rounded-full absolute z-50"
+			className="rounded-full absolute z-50 flex items-center justify-center"
 			style={{
-				width: "10px",
-				height: "10px",
+				width: "12px",
+				height: "12px",
 				pointerEvents: "none",
 				position: "absolute",
 				transform: "translate(-50%, -50%)",
 				backgroundColor: "rgb(45,45,45)",
 			}}
-			ref={cursorRef}></div>
+			ref={cursorRef}>
+			<span className="text-xxs text-center" ref={textRef}></span>
+		</div>
 	);
 }
 

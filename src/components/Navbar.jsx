@@ -66,7 +66,7 @@ function Navbar() {
 					<NavLink to="/services">Services</NavLink>
 				</li>
 				<li>
-					<NavLink to="/services">Projects</NavLink>
+					<NavLink to="/projects">Projects</NavLink>
 				</li>
 				<li>
 					<NavLink to="/blogs">Blogs</NavLink>
@@ -84,13 +84,13 @@ function Navbar() {
 			<div ref={menuRef} className={`mobile-menu w-full h-screen inset-0 flex items-center justify-center big-menu fixed z-10 bg-white `}>
 				<div className="flex gap-10 sm:gap-20">
 					<div className="flex flex-col justify-between">
-						<div className="text-xs font-semibold" ref={(el) => (fadeInUp1.current[0] = el)}>
+						<div className="text-sm font-bold" ref={(el) => (fadeInUp1.current[0] = el)}>
 							Mail
 						</div>
 						<p className="text-xs pb-5 cursor-pointer" ref={(el) => (fadeInUp1.current[1] = el)}>
 							info@devmani.in{" "}
 						</p>
-						<div className="text-xs font-semibold" ref={(el) => (fadeInUp2.current[0] = el)}>
+						<div className="text-sm font-bold" ref={(el) => (fadeInUp2.current[0] = el)}>
 							Contact
 						</div>
 						<div ref={(el) => (fadeInUp2.current[1] = el)}>
@@ -120,15 +120,18 @@ function Navbar() {
 							<h2 className="has-c-over">Home</h2>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[1] = el)}>
-							<h2 className="has-c-over">Services</h2>
+							<h2 className="has-c-over">About</h2>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[2] = el)}>
-							<h2 className="has-c-over">Projects</h2>
+							<h2 className="has-c-over">Services</h2>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[3] = el)}>
-							<h2 className="has-c-over">Blogs</h2>
+							<h2 className="has-c-over">Projects</h2>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[4] = el)}>
+							<h2 className="has-c-over">Blogs</h2>
+						</li>
+						<li className="text-sm" ref={(el) => (fadeInUp3.current[6] = el)}>
 							<h2 className="has-c-over">Contact</h2>
 						</li>
 					</ul>
