@@ -6,11 +6,10 @@ import Experience from "../components/About/Experience";
 import Technologies from "../components/About/Technologies";
 
 import { Helmet } from "react-helmet-async";
-import AboutBlog from "../components/About/aboutBlog";
 
 function AboutPage() {
 	return (
-		<div className="about-page container space-y-6">
+		<div className="about-page container space-y-6 md:space-y-8 lg:space-y-10 my-10 max-w-6xl">
 			<Helmet>
 				<title>About Manikanta | Developer & Freelancer</title>
 				<meta name="description" content="Learn more about Manikanta, a skilled developer and freelancer with expertise in creating impactful web solutions, open-source contributions, and innovative web technologies." />
@@ -31,7 +30,6 @@ function AboutPage() {
 			<TechEducation />
 			<Technologies />
 			<Experience />
-			{/* <AboutBlog /> */}
 		</div>
 	);
 }

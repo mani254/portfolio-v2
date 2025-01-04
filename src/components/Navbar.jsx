@@ -55,7 +55,7 @@ function Navbar() {
 				</NavLink>
 			</div>
 
-			<ul className="hidden md:flex items-center gap-5 glass-effect py-2 px-6 rounded-full font-semibold ml-[100px] relative z-20">
+			<ul className="hidden md:flex items-center gap-8 glass-effect py-2 px-6 rounded-full font-semibold ml-[100px] relative z-20">
 				<li>
 					<NavLink to="/">Home</NavLink>
 				</li>
@@ -68,9 +68,9 @@ function Navbar() {
 				<li>
 					<NavLink to="/projects">Projects</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink to="/blogs">Blogs</NavLink>
-				</li>
+				</li> */}
 			</ul>
 
 			<div className="flex gap-5 glass-effect rounded-full py-1 px-6 relative z-[20]">
@@ -82,31 +82,31 @@ function Navbar() {
 			</div>
 
 			<div ref={menuRef} className={`mobile-menu w-full h-screen inset-0 flex items-center justify-center big-menu fixed z-10 bg-white `}>
-				<div className="flex gap-10 sm:gap-20">
+				<div className="flex gap-12 sm:gap-28">
 					<div className="flex flex-col justify-between">
-						<div className="text-sm font-bold" ref={(el) => (fadeInUp1.current[0] = el)}>
+						<div className="text-md font-semibold" ref={(el) => (fadeInUp1.current[0] = el)}>
 							Mail
 						</div>
 						<p className="text-xs pb-5 cursor-pointer" ref={(el) => (fadeInUp1.current[1] = el)}>
 							info@devmani.in{" "}
 						</p>
-						<div className="text-sm font-bold" ref={(el) => (fadeInUp2.current[0] = el)}>
+						<div className="text-md font-semibold" ref={(el) => (fadeInUp2.current[0] = el)}>
 							Contact
 						</div>
 						<div ref={(el) => (fadeInUp2.current[1] = el)}>
-							<p className="text-xs  has-c-over">Github</p>
+							<p className="text-sm  has-c-over">Github</p>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[2] = el)}>
-							<p className="text-xs  has-c-over">Linkedin</p>
+							<p className="text-sm  has-c-over">Linkedin</p>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[3] = el)}>
-							<p className="text-xs  has-c-over">Instagram</p>
+							<p className="text-sm  has-c-over">Instagram</p>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[4] = el)}>
-							<p className="text-xs  has-c-over">Youtube</p>
+							<p className="text-sm  has-c-over">Youtube</p>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[5] = el)}>
-							<p className="text-xs  has-c-over">Whatsapp</p>
+							<p className="text-sm  has-c-over">Whatsapp</p>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[6] = el)}>
 							<p className="text-xs  has-c-over">Telegram</p>
@@ -115,7 +115,7 @@ function Navbar() {
 							<p className="text-xs  has-c-over">Twitter</p>
 						</div>
 					</div>
-					<ul className="space-y-6">
+					<ul className="space-y-8">
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[0] = el)}>
 							<h2 className="has-c-over">Home</h2>
 						</li>
@@ -128,9 +128,9 @@ function Navbar() {
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[3] = el)}>
 							<h2 className="has-c-over">Projects</h2>
 						</li>
-						<li className="text-sm" ref={(el) => (fadeInUp3.current[4] = el)}>
+						{/* <li className="text-sm" ref={(el) => (fadeInUp3.current[4] = el)}>
 							<h2 className="has-c-over">Blogs</h2>
-						</li>
+						</li> */}
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[6] = el)}>
 							<h2 className="has-c-over">Contact</h2>
 						</li>

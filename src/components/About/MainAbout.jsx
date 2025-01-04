@@ -15,7 +15,7 @@ function MainAbout() {
 		const imageTimeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: imageBoxRef.current,
-				start: "top 80%",
+				start: "top 90%",
 				toggleActions: "play none none reverse",
 			},
 		});
@@ -25,7 +25,7 @@ function MainAbout() {
 		const aboutTimeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: aboutBoxRef.current,
-				start: "top 80%",
+				start: "top 90%",
 				toggleActions: "play none none reverse",
 			},
 		});
@@ -58,7 +58,7 @@ function MainAbout() {
 	}, [aboutBoxRef, imageBoxRef, imageRef]);
 
 	return (
-		<section className="about-section flex flex-col lg:flex-row gap-6 mt-10">
+		<section className="about-section flex flex-col lg:flex-row gap-6 md:gap-8 lg-gap-10">
 			<div className="about-part w-full lg:w-[40%] relative order-2 min-h-72" ref={imageBoxRef}>
 				<img ref={imageRef} className="absolute object-contain object-center w-full h-full top-0 left-0" src={profile} alt="Manikanta profile image" />
 			</div>

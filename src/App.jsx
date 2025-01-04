@@ -15,6 +15,7 @@ import HomePage from "./pages/HomePage";
 
 import { Route, Routes } from "react-router-dom";
 import Projects from "./pages/Projects";
+import ServicesPage from "./pages/ServicesPage";
 export const AppContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,6 +50,7 @@ function App() {
 						<Route path="/" element={<HomePage />} />
 						<Route path="/about" element={<AboutPage />} />
 						<Route path="/projects" element={<Projects />} />
+						<Route path="/services" element={<ServicesPage />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</HelmetProvider>

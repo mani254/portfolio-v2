@@ -105,7 +105,7 @@ function TechEducation() {
 		};
 	}, [servicesRef, serviceWrapper, educationRef, educationWrapper]);
 	return (
-		<section className="about-section flex flex-col md:flex-row gap-6">
+		<section className="about-section flex flex-col md:flex-row gap-6 md:gap-8 lg-gap-10">
 			<div className="about-part w-full md:w-1/3 relative" ref={servicesRef}>
 				<h2 className="mb-6">My Services</h2>
 				<div ref={serviceWrapper}>

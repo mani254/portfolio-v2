@@ -139,7 +139,8 @@ const ParticleText = ({ textLines = ["MERN Stack", "Developer"], fontSizeMultipl
 			window.removeEventListener("resize", resizeCanvas);
 			canvas.removeEventListener("mousemove", handleMouseMove);
 		};
-	}, [textLines, fontSizeMultiplier, minFontSize, maxFontSize, particleColor]);
+	}, []);
+	// }, [textLines, fontSizeMultiplier, minFontSize, maxFontSize, particleColor]);
 
 	return <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />;
 };

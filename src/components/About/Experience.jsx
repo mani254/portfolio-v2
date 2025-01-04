@@ -89,7 +89,7 @@ function Experience() {
 	}, [expRef, instaRef, gitRef, socialRef]);
 
 	return (
-		<section className="about-section flex flex-col md:flex-row gap-6">
+		<section className="about-section flex flex-col md:flex-row gap-6 md:gap-8 lg-gap-10">
 			<div className="about-part md:w-2/3 w-full" ref={expRef}>
 				<h2 className="mb-6">My Experience</h2>
 				<div ref={expWrapper}>

@@ -125,7 +125,7 @@ function Technologies() {
 	}, [techRef, gitRef, ctaRef]);
 
 	return (
-		<section className="about-section flex flex-col md:flex-row gap-6">
+		<section className="about-section flex flex-col md:flex-row gap-6 md:gap-8 lg-gap-10">
 			<div className="about-part w-full  md:w-1/2" ref={techRef}>
 				<h2 className="mb-1">My Tech Stack</h2>
 				<div className="overflow-visible relative">
