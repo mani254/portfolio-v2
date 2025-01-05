@@ -9,7 +9,7 @@ function BreadCrumb({ subtitle, title }) {
 
 	useEffect(() => {
 		const wrapperAnim = gsap.to(wrapperRef.current, {
-			y: -100,
+			y: -70,
 			scrollTrigger: {
 				trigger: wrapperRef.current,
 				start: "top 20%",
@@ -19,12 +19,12 @@ function BreadCrumb({ subtitle, title }) {
 			ease: "sine.out",
 		});
 
-		const timeline = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+		const timeline = gsap.timeline({ defaults: { ease: "power2.inOut", delay: 0.2 } });
 
-		timeline.fromTo(subTitleRef.current, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" });
+		timeline.fromTo(subTitleRef.current, { opacity: 0.1, x: 40 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" });
 
-		const splitHeading = new SplitType(headingRef.current, { types: "words" });
-		timeline.fromTo(splitHeading.words, { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: 0.02, duration: 0.6, ease: "power2.out" }, "-=0.3");
+		const splitHeading = new SplitType(headingRef.current, { types: "lines" });
+		timeline.fromTo(splitHeading.lines, { opacity: 0.1, y: 20 }, { opacity: 1, y: 0, stagger: 0.2, duration: 0.6, ease: "power2.out" }, "-=0.3");
 
 		return () => {
 			timeline.kill();

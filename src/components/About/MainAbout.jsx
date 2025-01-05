@@ -18,9 +18,10 @@ function MainAbout() {
 				start: "top 90%",
 				toggleActions: "play none none reverse",
 			},
+			defaults: { delay: 0.3 },
 		});
 
-		imageTimeline.fromTo(imageBoxRef.current, { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 }).fromTo(imageRef.current, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, ease: "power3.out", duration: 1 }, "-=0.5");
+		imageTimeline.fromTo(imageBoxRef.current, { opacity: 0.1, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 }).fromTo(imageRef.current, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, ease: "power3.out", duration: 1 }, "-=0.5");
 
 		const aboutTimeline = gsap.timeline({
 			scrollTrigger: {
@@ -28,14 +29,15 @@ function MainAbout() {
 				start: "top 90%",
 				toggleActions: "play none none reverse",
 			},
+			defaults: { delay: 0.3 },
 		});
 
 		const firstChild = aboutBoxRef.current.children[0];
 		const secondChild = aboutBoxRef.current.children[1];
 
-		aboutTimeline.fromTo(aboutBoxRef.current, { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 });
+		aboutTimeline.fromTo(aboutBoxRef.current, { opacity: 0.1, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 });
 
-		aboutTimeline.fromTo(firstChild, { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.5 });
+		aboutTimeline.fromTo(firstChild, { opacity: 0.1, y: 30 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.5 });
 
 		const h2 = secondChild.querySelector("h2");
 		const p = secondChild.querySelector("p");

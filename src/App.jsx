@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import SmoothScroll from "./components/smoothScroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,6 +15,8 @@ import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router-dom";
 import Projects from "./pages/Projects";
 import ServicesPage from "./pages/ServicesPage";
+import PageTransition from "./components/Utils/PageTransition";
+
 export const AppContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +28,7 @@ function App() {
 		isDark: false,
 	});
 
-	//useEffect to handle the reaize and set the isMobile in the options
+	// useEffect to handle resize and set the isMobile in the options
 	useEffect(() => {
 		function handleResize() {
 			window.innerWidth > 768 ? setOptions({ ...options, isMobile: false }) : setOptions({ ...options, isMobile: true });
@@ -47,10 +48,38 @@ function App() {
 				<Navbar />
 				<HelmetProvider>
 					<Routes>
-						<Route path="/" element={<HomePage />} />
-						<Route path="/about" element={<AboutPage />} />
-						<Route path="/projects" element={<Projects />} />
-						<Route path="/services" element={<ServicesPage />} />
+						<Route
+							path="/"
+							element={
+								<PageTransition>
+									<HomePage />
+								</PageTransition>
+							}
+						/>
+						<Route
+							path="/about"
+							element={
+								<PageTransition>
+									<AboutPage />
+								</PageTransition>
+							}
+						/>
+						<Route
+							path="/projects"
+							element={
+								<PageTransition>
+									<Projects />
+								</PageTransition>
+							}
+						/>
+						<Route
+							path="/services"
+							element={
+								<PageTransition>
+									<ServicesPage />
+								</PageTransition>
+							}
+						/>
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</HelmetProvider>
