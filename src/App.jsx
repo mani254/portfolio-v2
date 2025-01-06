@@ -16,7 +16,6 @@ import { Route, Routes } from "react-router-dom";
 import Projects from "./pages/Projects";
 import ServicesPage from "./pages/ServicesPage";
 import PageTransition from "./components/Utils/PageTransition";
-
 export const AppContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
