@@ -33,8 +33,8 @@ function BreadCrumb({ subtitle, title }) {
 	}, []);
 
 	return (
-		<div className="py-20" ref={wrapperRef}>
-			<p ref={subTitleRef} className="text-lg inline-block text-zinc-600 border-b border-zinc-600">
+		<div className="mt-10 py-14 md:mt-0 md:py-20" ref={wrapperRef}>
+			<p ref={subTitleRef} className="text-md md:text-lg inline-block text-zinc-600 border-b border-zinc-600">
 				{subtitle}
 			</p>
 			<h1 ref={headingRef} className="mt-10 text-xl md:text-2xl" aria-label={title}>

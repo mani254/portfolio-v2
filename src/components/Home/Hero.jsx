@@ -53,7 +53,7 @@ function Hero() {
 	}, [titleRef, textRef]);
 
 	return (
-		<section className="container flex max-h-[850px]" style={{ height: "calc(100vh - 75px)" }}>
+		<section className="md:container flex max-h-[850px]" style={{ height: "calc(100vh - 75px)" }}>
 			<div className="min-w-12 h-full sm:flex gap-5 flex-col items-center justify-between  ml-[6px] py-5 hidden">
 				<div>
 					<span className="h-20 w-[1.5px] bg-dark block rounded-full"></span>
@@ -62,24 +62,24 @@ function Hero() {
 					</div>
 					<span className="h-20 w-[1.5px] bg-dark block rounded-full"></span>
 				</div>
-				<div className="flex flex-col gap-3">
-					<a href="https://github.com/mani254" target="_blank">
-						<img className="w-7" src={github} alt="github svg icon" />
+				<div className="flex flex-col gap-4">
+					<a className="hover-link" href="https://github.com/mani254" target="_blank">
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={github} alt="github svg icon" />
 					</a>
-					<a href="https://www.linkedin.com/in/sai0421/" target="_blank">
-						<img className="w-7" src={linkedin} alt="linkedin svg icon" />
+					<a className="hover-link" href="https://www.linkedin.com/in/sai0421/" target="_blank">
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={linkedin} alt="linkedin svg icon" />
 					</a>
 					{/* <a href="#">
-						<img className="w-7" src={discord} alt="discord svg icon" />
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={discord} alt="discord svg icon" />
 					</a> */}
-					<a href="https://www.instagram.com/code_addict21/" target="_blank">
-						<img className="w-7" src={instagram} alt="instagram svg icon" />
+					<a className="hover-link" href="https://www.instagram.com/code_addict21/" target="_blank">
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={instagram} alt="instagram svg icon" />
 					</a>
-					<a href="https://x.com/Manikanta_425" target="_blank">
-						<img className="w-7" src={twitter} alt="twitter svg icon" />
+					<a className="hover-link" href="https://x.com/Manikanta_425" target="_blank">
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={twitter} alt="twitter svg icon" />
 					</a>
-					<a href="https://www.youtube.com/channel/UCCdkYdNdJYuyQx_ky5GTvYg" target="_blank">
-						<img className="w-7" src={youtube} alt="youtube svg icon" />
+					<a className="hover-link" href="https://www.youtube.com/channel/UCCdkYdNdJYuyQx_ky5GTvYg" target="_blank">
+						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={youtube} alt="youtube svg icon" />
 					</a>
 				</div>
 			</div>

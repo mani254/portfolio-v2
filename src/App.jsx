@@ -16,6 +16,7 @@ import { Route, Routes } from "react-router-dom";
 import Projects from "./pages/Projects";
 import ServicesPage from "./pages/ServicesPage";
 import PageTransition from "./components/Utils/PageTransition";
+import ContactPage from "./pages/ContactPage";
 export const AppContext = React.createContext();
 
 gsap.registerPlugin(ScrollTrigger);
@@ -76,6 +77,14 @@ function App() {
 							element={
 								<PageTransition>
 									<ServicesPage />
+								</PageTransition>
+							}
+						/>
+						<Route
+							path="/contact"
+							element={
+								<PageTransition>
+									<ContactPage />
 								</PageTransition>
 							}
 						/>

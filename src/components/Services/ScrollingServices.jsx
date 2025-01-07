@@ -9,6 +9,8 @@ function ScrollingServices({ mainPage }) {
 	const servicesRef = useRef([]);
 	const servicesBoxes = useRef([]);
 	const contentRefs = useRef([]);
+	const mobileCards = useRef([]);
+
 	const { options } = useContext(AppContext);
 	const { isMobile } = options;
 
@@ -42,7 +44,8 @@ function ScrollingServices({ mainPage }) {
 
 		const ctx = gsap.context(() => {
 			servicesRef.current.forEach((el, index) => {
-				if (el && servicesBoxes.current[index]) {
+				const isLast = index === servicesRef.current.length - 1;
+				if (el && servicesBoxes.current[index] && !isLast) {
 					const imageWrapper = servicesBoxes.current[index].querySelector(".image-wrapper");
 					gsap.fromTo(
 						imageWrapper,
@@ -104,33 +107,64 @@ function ScrollingServices({ mainPage }) {
 		return () => ctx.revert();
 	}, [contentRefs, isMobile]);
 
+	useEffect(() => {
+		if (!mobileCards.current) return;
+
+		const ctx = gsap.context(() => {
+			mobileCards.current.forEach((el, index) => {
+				if (el) {
+					gsap.fromTo(
+						el,
+						{
+							opacity: 0,
+							y: 50,
+							x: -200,
+							skewY: 20,
+						},
+						{
+							opacity: 1,
+							y: 0,
+							x: 0,
+							skewY: 0,
+							scrollTrigger: {
+								trigger: el,
+								start: "top 95%",
+								end: "top 60%",
+								scrub: true,
+							},
+						}
+					);
+				}
+			});
+		});
+
+		return () => ctx.revert();
+	}, [mobileCards]);
+
 	return (
 		<>
 			{isMobile ? (
-				<div className="space-y-32 mb-32">
-					{services.map((service, index) => {
-						return (
-							<div className="flex flex-col gap-5 container max-w-[500px]">
-								<div
-									key={service.id}
-									className="w-full h-full aspect-[8/8] rounded-3xl overflow-hidden p-4 text-center flex items-center justify-center"
-									style={{
-										background: service.boxColor,
-									}}>
-									<div className="image-wrapper relative w-full aspect-[16/9] rounded-2xl overflow-hidden" style={{ boxShadow: services[index].boxShadow }}>
-										<img src={service.image} alt={service.title} className="w-full h-full object-center object-cover" />
-									</div>
-								</div>
-								<div className="flex items-center justify-center" key={service.id}>
-									<div className="space-y-2">
-										<h1 className="text-xl text-center">{service.title}</h1>
-										<h5 className="text-center">{service.subTitle}</h5>
-										<p className="text-center">{service.description}</p>
-									</div>
+				<div className="container space-y-[100px]">
+					{services.map((service, index) => (
+						<div key={service.id} className="rounded-3xl overflow-hidden" style={{ backgroundColor: `${service.backgroundColor}66` }} ref={(el) => el && !mobileCards.current.includes(el) && mobileCards.current.push(el)}>
+							<div
+								className="w-full h-full  px-5 py-10 flex items-center justify-center"
+								style={{
+									backgroundColor: `${service.boxColor}77`,
+								}}>
+								<div className="image-wrapper relative w-full aspect-[16/9] rounded-2xl overflow-hidden" style={{ boxShadow: `0px 4px 15px ${services[index].cursorColor}` }}>
+									<img src={service.image} alt={service.title} className="w-full h-full object-center object-cover" />
 								</div>
 							</div>
-						);
-					})}
+
+							{/* Content Section */}
+							<div className="p-6 space-y-2">
+								<h2 className="text-lg  font-bold text-gray-800">{service.title}</h2>
+								<h5 className="text-md font-medium text-gray-600">{service.subTitle}</h5>
+								<p className="text-sm text-gray-500">{service.description}</p>
+							</div>
+						</div>
+					))}
 				</div>
 			) : (
 				<div className="flex  relative max-w-6xl container m-auto">
@@ -138,8 +172,10 @@ function ScrollingServices({ mainPage }) {
 						{services.map((service, index) => {
 							return (
 								<div className="flex items-center justify-center h-screen" ref={(el) => el && !servicesRef.current.includes(el) && servicesRef.current.push(el)} data-background={service.backgroundColor} data-cursor-color={service.cursorColor} key={service.id}>
-									<div className="space-y-3" ref={(el) => el && !contentRefs.current.includes(el) && contentRefs.current.push(el)}>
-										<h1 className="text-2xl">{service.title}</h1>
+									<div className="space-y-3 max-w-[380px]" ref={(el) => el && !contentRefs.current.includes(el) && contentRefs.current.push(el)}>
+										<h1 className="text-2xl font-semibold" style={{ color: service.cursorColor }}>
+											{service.title}
+										</h1>
 										<h5>{service.subTitle}</h5>
 										<p>{service.description}</p>
 									</div>

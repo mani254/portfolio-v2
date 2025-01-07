@@ -6,7 +6,7 @@ const services = [
       id: "web-development",
       title: "Web Development",
       subTitle: "Building Scalable and High-Performance Websites",
-      description: "We create robust and scalable web solutions tailored to your business needs. From dynamic web applications to e-commerce platforms, we ensure seamless user experiences and cutting-edge technologies.",
+      description: "We build scalable, high-performance websites tailored to your business, ensuring smooth user experiences with the latest technologies.",
       image: about1,
       backgroundColor: "#FAE1EE",
       boxColor: "#F9D1E6",
@@ -17,7 +17,7 @@ const services = [
       id: "web-design",
       title: "Web Design",
       subTitle: "Creative and User-Friendly Designs",
-      description: "Our web design services combine creativity and functionality to deliver visually appealing and user-centric designs that elevate your brand's online presence.",
+      description: "We create visually appealing, user-friendly designs that enhance engagement and strengthen your brand’s online presence.",
       image: about2,
       backgroundColor: "#E0F0FF",
       boxColor: "#CDD1FF",
@@ -28,7 +28,7 @@ const services = [
       id: "seo-services",
       title: "SEO Services",
       subTitle: "Boost Your Online Visibility",
-      description: "Enhance your website's search engine ranking with our tailored SEO strategies. We optimize content, structure, and keywords to help you reach your target audience effectively.",
+      description: "Our SEO strategies improve your site’s ranking and visibility, driving more targeted traffic to grow your business online.",
       image: about3,
       backgroundColor: "#FFEDE0",
       boxColor: "#FCD2AF",
@@ -39,7 +39,7 @@ const services = [
       id: "graphic-design",
       title: "Graphic Design",
       subTitle: "Crafting Visual Masterpieces",
-      description: "From logos to marketing materials, we provide professional graphic design services to make your brand stand out and leave a lasting impression.",
+      description: "We design logos and marketing materials that leave a lasting impression, elevating your brand’s identity.",
       image: about4,
       backgroundColor: "#EDE0FF",
       boxColor: "#D1BFFC",
@@ -50,24 +50,14 @@ const services = [
       id: "app-development",
       title: "App Development",
       subTitle: "Innovative Mobile Solutions",
-      description: "Our app development services bring your ideas to life with custom mobile applications that deliver seamless performance and intuitive user experiences.",
+      description: "We develop custom mobile apps that deliver seamless performance and exceptional user experiences.",
       image: about5,
-      backgroundColor: "#FFF0E0", // Soft orange to convey innovation
-      boxColor: "#FFD1AF", // Lighter tones for energy and enthusiasm
-      cursorColor: "#E69563", // Accent orange for highlights
+      backgroundColor: "#FFF0E0",
+      boxColor: "#FFD1AF",
+      cursorColor: "#E69563",
       boxShadow: "0px 12px 27px #E69563"
    },
-   // {
-   //    id: "poster-design",
-   //    title: "Poster Design",
-   //    subTitle: "Captivating Visual Communication",
-   //    description: "Design eye-catching posters that effectively communicate your message and captivate your audience, suitable for events, promotions, and campaigns.",
-   //    image: about6,
-   //    backgroundColor: "#E0FFE4", // Soft green for fresh and dynamic visuals
-   //    boxColor: "#BFFFC8", // Complementary box color for balance
-   //    cursorColor: "#63D17E", // Vibrant green for a striking effect
-   //    boxShadow: "0px 12px 27px #63D17E"
-   // },
 ];
 
-export default services
+export default services;
+

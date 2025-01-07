@@ -10,7 +10,7 @@ function Cursor() {
 	const textRef = useRef(null);
 	const location = useLocation();
 
-	const updateCursorStyles = (width, height, mixBlendMode, backgroundColor, duration = 0.25) => {
+	const updateCursorStyles = (width, height, mixBlendMode, backgroundColor = "rgb(65,65,65)", duration = 0.25) => {
 		if (cursorRef.current) {
 			gsap.to(cursorRef.current, {
 				width,
@@ -55,7 +55,7 @@ function Cursor() {
 				const deltaX = adjustedX - centerX;
 				const deltaY = adjustedY - centerY;
 				const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-				const maxDistance = 7; // Maximum distance cursor moves towards element
+				const maxDistance = 10; // Maximum distance cursor moves towards element
 
 				const moveX = (deltaX / distance) * Math.min(distance, maxDistance);
 				const moveY = (deltaY / distance) * Math.min(distance, maxDistance);
@@ -81,7 +81,7 @@ function Cursor() {
 	};
 
 	const handleMouseLeave = () => {
-		updateCursorStyles("12px", "12px", "normal", "rgb(45,45,45)");
+		updateCursorStyles("12px", "12px", "normal");
 	};
 
 	const handleTextCursorEnter = (event) => {
@@ -89,7 +89,7 @@ function Cursor() {
 		if (textRef.current) {
 			textRef.current.textContent = text;
 		}
-		updateCursorStyles("65px", "65px", "normal", "black");
+		updateCursorStyles("65px", "65px", "normal");
 		textRef.current.style.color = "white";
 		textRef.current.style.fontSize = "12px";
 	};
@@ -98,7 +98,15 @@ function Cursor() {
 		if (textRef.current) {
 			textRef.current.textContent = "";
 		}
-		updateCursorStyles("12px", "12px", "normal", "black");
+		updateCursorStyles("12px", "12px", "normal");
+	};
+
+	const handleLinkCursorEnter = () => {
+		updateCursorStyles("60px", "60px", "normal", "rgba(65,65,65,0.1)");
+	};
+
+	const handleLinkCursorLeave = () => {
+		updateCursorStyles("12px", "12px", "normal");
 	};
 
 	useEffect(() => {
@@ -118,6 +126,12 @@ function Cursor() {
 			el.addEventListener("mouseleave", handleTextCursorLeave);
 		});
 
+		const hoverLinks = document.querySelectorAll(".hover-link");
+		hoverLinks.forEach((el) => {
+			el.addEventListener("mouseenter", handleLinkCursorEnter);
+			el.addEventListener("mouseleave", handleLinkCursorLeave);
+		});
+
 		return () => {
 			document.removeEventListener("mousemove", handleMouseMove);
 			hoverElements.forEach((el) => {
@@ -127,6 +141,10 @@ function Cursor() {
 			textCursorElements.forEach((el) => {
 				el.removeEventListener("mouseenter", handleTextCursorEnter);
 				el.removeEventListener("mouseleave", handleTextCursorLeave);
+			});
+			hoverLinks.forEach((el) => {
+				el.removeEventListener("mouseenter", handleLinkCursorEnter);
+				el.removeEventListener("mouseleave", handleLinkCursorLeave);
 			});
 		};
 	}, [isMobile, location]);
@@ -140,7 +158,7 @@ function Cursor() {
 				pointerEvents: "none",
 				position: "absolute",
 				transform: "translate(-50%, -50%)",
-				backgroundColor: "rgb(45,45,45)",
+				backgroundColor: "rgb(65,65,65)",
 			}}
 			ref={cursorRef}>
 			<span className="text-xxs text-center" ref={textRef}></span>

@@ -35,7 +35,7 @@ function MainAbout() {
 		const firstChild = aboutBoxRef.current.children[0];
 		const secondChild = aboutBoxRef.current.children[1];
 
-		aboutTimeline.fromTo(aboutBoxRef.current, { opacity: 0.1, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.8 });
+		aboutTimeline.fromTo(aboutBoxRef.current, { opacity: 0.1, y: 70 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.5 });
 
 		aboutTimeline.fromTo(firstChild, { opacity: 0.1, y: 30 }, { opacity: 1, y: 0, ease: "power3.out", duration: 0.5 });
 
@@ -46,12 +46,12 @@ function MainAbout() {
 		let splitPara = null;
 		if (h2) {
 			splitText = new SplitType(h2, { types: "words", tagName: "span" });
-			aboutTimeline.fromTo(splitText.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 }, "-=0.4");
+			aboutTimeline.fromTo(splitText.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.02, ease: "power2.out", duration: 1 }, "-=0.8");
 		}
 
 		if (p) {
 			splitPara = new SplitType(p, { types: "words", tagName: "span" });
-			aboutTimeline.fromTo(splitPara.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 }, "-=0.5");
+			aboutTimeline.fromTo(splitPara.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.02, ease: "power2.out", duration: 1 }, "-=0.8");
 		}
 		return () => {
 			aboutTimeline.kill();

@@ -8,13 +8,14 @@ function ServicesPage() {
 
 	return (
 		<div ref={servicePageRef}>
-			<div className="max-w-6xl m-auto">
+			<div className="max-w-6xl m-auto container">
 				<BreadCrumb title="Turning Your Vision into Real, Results-Driven Solutions with Exceptional Quality" subtitle="What I Offer" />
 				<ServiceImage />
 			</div>
 			<div className="mt-[150px]">
 				<ScrollingServices mainPage={servicePageRef} />
 			</div>
+			<div className="h-[600px]"></div>
 		</div>
 	);
 }
