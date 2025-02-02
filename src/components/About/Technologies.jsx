@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
 import { css, expressjs, figma, fingers, git, html, js, mongodb, mysql, nextjs, python, reactjs, redux, tailwind, vscode, nodejs } from "../../utils";
 import gsap from "gsap";
+import { NavLink } from "react-router-dom";
 
 const technologies = [
 	{ title: "JavaScript", image: js, alt: "JavaScript logo" },
@@ -160,14 +161,16 @@ function Technologies() {
 					<h2 className="mb-6">My Git Contributions</h2>
 					<GitHubActivity />
 				</div>
-				<div className="rounded-3xl p-5 bg-dark flex items-center justify-center relative overflow-hidden cursor-pointer gap-3 md:gap-6 hover:bg-gray-800" ref={ctaRef}>
-					<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
-					<div className="w-full">
-						<h4 className="text-white text-sm md:text-md text-center">Let's Work Together!</h4>
-						<h4 className="text-white text-sm md:text-md text-center">Send Me a Message</h4>
+				<NavLink to="/contact">
+					<div className="rounded-3xl p-5 bg-dark flex items-center justify-center relative overflow-hidden cursor-pointer gap-3 md:gap-6 hover:bg-gray-800" ref={ctaRef}>
+						<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
+						<div className="w-full">
+							<h4 className="text-white text-sm md:text-md text-center">Let's Work Together!</h4>
+							<h4 className="text-white text-sm md:text-md text-center">Send Me a Message</h4>
+						</div>
+						<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
 					</div>
-					<img src={fingers} alt="two fingers 3d icon" className="h-14 md:h-16" />
-				</div>
+				</NavLink>
 			</div>
 		</section>
 	);

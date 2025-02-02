@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import services from "../../utils/servicesArray";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { NavLink } from "react-router-dom";
 
 import { AppContext } from "../../App";
 
@@ -108,7 +109,7 @@ function ScrollingServices({ mainPage }) {
 	}, [contentRefs, isMobile]);
 
 	useEffect(() => {
-		if (!mobileCards.current) return;
+		if (mobileCards.current.length === 0) return;
 
 		const ctx = gsap.context(() => {
 			mobileCards.current.forEach((el, index) => {
@@ -117,20 +118,21 @@ function ScrollingServices({ mainPage }) {
 						el,
 						{
 							opacity: 0,
-							y: 50,
-							x: -200,
-							skewY: 20,
+							y: 100,
+							scale: 0.9,
 						},
 						{
 							opacity: 1,
 							y: 0,
-							x: 0,
-							skewY: 0,
+							scale: 1,
+							duration: 1.2,
+							ease: "power1.inout",
 							scrollTrigger: {
 								trigger: el,
 								start: "top 95%",
-								end: "top 60%",
-								scrub: true,
+								end: "top 70%",
+								scrub: 1,
+								markers: false, // Set to `true` for debugging
 							},
 						}
 					);
@@ -144,9 +146,9 @@ function ScrollingServices({ mainPage }) {
 	return (
 		<>
 			{isMobile ? (
-				<div className="container space-y-[100px]">
+				<div className="container space-y-[100px] overflow-hidden px-7">
 					{services.map((service, index) => (
-						<div key={service.id} className="rounded-3xl overflow-hidden" style={{ backgroundColor: `${service.backgroundColor}66` }} ref={(el) => el && !mobileCards.current.includes(el) && mobileCards.current.push(el)}>
+						<div key={service.id} className="rounded-3xl overflow-hidden" style={{ backgroundColor: `${service.backgroundColor}80` }} ref={(el) => el && !mobileCards.current.includes(el) && mobileCards.current.push(el)}>
 							<div
 								className="w-full h-full  px-5 py-10 flex items-center justify-center"
 								style={{
@@ -178,6 +180,11 @@ function ScrollingServices({ mainPage }) {
 										</h1>
 										<h5>{service.subTitle}</h5>
 										<p>{service.description}</p>
+										<NavLink to="/contact" className="pt-3 inline-block move-over">
+											<button className="w-full md:w-auto flex-list-button">
+												<span>Contact Us</span>
+											</button>
+										</NavLink>
 									</div>
 								</div>
 							);

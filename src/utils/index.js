@@ -92,12 +92,12 @@ export { fingers }
 
 
 const socialMedia = [
-   { image: instagramColor, alt: "instagram svg", link: "" },
-   { image: xColor, alt: "x svg", link: "" },
-   { image: youtubeColor, alt: "youtube svg", link: "" },
-   { image: linkedincolor, alt: "linkedin svg", link: "" },
-   { image: whatsappColor, alt: "whatsapp svg", link: "" },
-   { image: facebookColor, alt: "facebook svg", link: "" },
+   { image: instagramColor, alt: "instagram svg", link: "https://www.instagram.com/code_addict21/" },
+   { image: xColor, alt: "x svg", link: "https://x.com/Manikanta_425" },
+   { image: youtubeColor, alt: "youtube svg", link: "https://www.youtube.com/channel/UCCdkYdNdJYuyQx_ky5GTvYg" },
+   { image: linkedincolor, alt: "linkedin svg", link: "https://www.linkedin.com/in/sai0421/" },
+   { image: whatsappColor, alt: "whatsapp svg", link: "https://www.wa.me/+918688014415" },
+   { image: facebookColor, alt: "facebook svg", link: "https://www.facebook.com/saimanikanta.mamidi.1" },
 ];
 
 export { socialMedia }

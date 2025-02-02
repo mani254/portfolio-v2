@@ -37,7 +37,10 @@ function Cursor() {
 		}
 
 		// Handle hover effects for elements with 'has-c-over' class
-		const hoverElements = document.querySelectorAll(".has-c-over");
+		let hoverElements = Array.from(document.querySelectorAll(".has-c-over"));
+		let elements = Array.from(document.querySelectorAll(".move-over"));
+		hoverElements = hoverElements.concat(elements);
+
 		hoverElements.forEach((el) => {
 			const rect = el.getBoundingClientRect();
 			const scrollX = window.scrollX || window.pageXOffset;
@@ -55,7 +58,7 @@ function Cursor() {
 				const deltaX = adjustedX - centerX;
 				const deltaY = adjustedY - centerY;
 				const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-				const maxDistance = 10; // Maximum distance cursor moves towards element
+				const maxDistance = 17;
 
 				const moveX = (deltaX / distance) * Math.min(distance, maxDistance);
 				const moveY = (deltaY / distance) * Math.min(distance, maxDistance);
@@ -89,8 +92,8 @@ function Cursor() {
 		if (textRef.current) {
 			textRef.current.textContent = text;
 		}
-		updateCursorStyles("65px", "65px", "normal");
-		textRef.current.style.color = "white";
+		updateCursorStyles("65px", "65px", "normal", "rgba(85,85,85,0.8)");
+		textRef.current.style.color = "rgba(220,220,220,0.9)";
 		textRef.current.style.fontSize = "12px";
 	};
 
@@ -102,7 +105,7 @@ function Cursor() {
 	};
 
 	const handleLinkCursorEnter = () => {
-		updateCursorStyles("60px", "60px", "normal", "rgba(65,65,65,0.1)");
+		updateCursorStyles("60px", "60px", "normal", "rgba(85,85,85,0.1)");
 	};
 
 	const handleLinkCursorLeave = () => {

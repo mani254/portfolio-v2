@@ -128,22 +128,27 @@ function Experience() {
 						<div className={` rounded-xl w-10 h-10 shadow-sm bg-white p-1 absolute top-2 right-2`}>
 							<img className="w-full h-full" src={instagramColoured} alt="instagram coloured svg icon" />
 						</div>
-						<div className="absolute w-full h-full bg-dark bg-opacity-0 inset-0 flex flex-col items-center justify-center gap-3 group-hover:bg-opacity-70 transition-all duration-400">
-							<img src={instagramFilled} className="scale-[1.4] rotate-45 opacity-0 group-hover:rotate-0 group-hover:scale-[1] group-hover:opacity-100 transition-all duration-200 delay-150" alt="insgram filled icon" />
-							<h5 className="text-center text-white scale-[1.3] opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-[1] transition-all duration-200 delay-200">Follow Me On Instagram</h5>
-						</div>
+						<a href="https://www.instagram.com/code_addict21/" target="_blank">
+							<div className="absolute w-full h-full bg-dark bg-opacity-0 inset-0 flex flex-col items-center justify-center gap-3 group-hover:bg-opacity-70 transition-all duration-400">
+								<img src={instagramFilled} className="scale-[1.4] rotate-45 opacity-0 group-hover:rotate-0 group-hover:scale-[1] group-hover:opacity-100 transition-all duration-200 delay-150" alt="insgram filled icon" />
+								<h5 className="text-center text-white scale-[1.3] opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-[1] transition-all duration-200 delay-200">Follow Me On Instagram</h5>
+							</div>
+						</a>
 					</div>
+
 					<div className=" w-1/2 md:w-full aspect-square overflow-hidden rounded-3xl bg-dark bg-opacity-95 relative cursor-pointer" ref={gitRef}>
 						<h4 className="absolute z-20 text-white bottom-3 left-1/2 -translate-x-1/2 text-opacity-80 font-bold text-center">Github</h4>
-						<div className="loader">
-							<div className="box">
-								<img src={githubFill} className="w-full h-full" style={{ filter: "invert(0.3)" }} alt="github filled " />
+						<a href="https://www.github.com/mani254" target="_blank">
+							<div className="loader hover:scale-125 transition-transform duration-300 ease-in-out">
+								<div className="box">
+									<img src={githubFill} className="w-full h-full" style={{ filter: "invert(0.3)" }} alt="github filled " />
+								</div>
+								<div className="box"></div>
+								<div className="box"></div>
+								<div className="box"></div>
+								<div className="box"></div>
 							</div>
-							<div className="box"></div>
-							<div className="box"></div>
-							<div className="box"></div>
-							<div className="box"></div>
-						</div>
+						</a>
 					</div>
 				</div>
 				<div className="about-part md:hidden lg:block" ref={socialRef}>
@@ -178,13 +183,15 @@ function SingleSocialMedia({ social, right }) {
 	return (
 		<div className={`max-w-9 aspect-square ${right ? "odd:translate-x-2 even:-translate-x-2" : "odd:-translate-x-2 even:translate-x-2"} hover:scale-110 cursor-pointer transition-transform duration-300`}>
 			<div
-				className="floating-icon "
+				className="floating-icon"
 				style={{
 					animationDuration: duration,
 					animationDelay: delay,
 					"--float-distance": distance,
 				}}>
-				<img className="max-w-7 w-7" src={social.image} alt={social.alt} />
+				<a href={social.link} target="_blank">
+					<img className="max-w-7 w-7 hover-link" src={social.image} alt={social.alt} />
+				</a>
 			</div>
 		</div>
 	);

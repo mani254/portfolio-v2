@@ -18,7 +18,7 @@ function Projects() {
 
 	return (
 		<div className="container max-w-6xl">
-			<BreadCrumb title="Bringing ideas to life with clean, interactive, and user-friendly designs." subtitle="My Projects" />
+			<BreadCrumb title="Bringing ideas to life with clean, interactive, and user friendly designs." subtitle="My Projects" />
 			<div ref={listRef}>
 				<ProjectsList />
 			</div>

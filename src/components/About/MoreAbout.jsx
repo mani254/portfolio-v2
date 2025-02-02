@@ -3,6 +3,7 @@ import { about1, about2, about3, about4, about5, about6 } from "../../utils";
 import gsap from "gsap";
 
 import { AppContext } from "../../App";
+import { NavLink } from "react-router-dom";
 
 const projects = [
 	{
@@ -47,7 +48,7 @@ function MoreAbout() {
 		const tl1 = gsap.timeline({
 			scrollTrigger: {
 				trigger: sectionRef.current,
-				start: "top 80%",
+				start: "top 85%",
 				toggleActions: "play none none reverse",
 			},
 		});
@@ -68,8 +69,12 @@ function MoreAbout() {
 				</div>
 				<div className="space-y-5 about-part order-1 md:order-2" ref={secondChildRef}>
 					<h2>Key Projects and OpenSource Contributions</h2>
-					<p>I developed the editorify-dev npm package, a reusable UI component library, and I’m building a backend e-commerce platform similar to Shopify, offering seamless API integration. Additionally, I’ve worked on various individual client projects. See all projects below.</p>
-					<button className="btn-1 w-full md:w-auto py-2">Sell all Projects</button>
+					<p aria-label="Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.">Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.</p>
+					<NavLink to="/projects" className="inline-block move-over">
+						<button className="w-full md:w-auto flex-list-button">
+							<span>See all Projects</span>
+						</button>
+					</NavLink>
 				</div>
 			</div>
 		</section>
@@ -124,7 +129,7 @@ function ScrollingProjects() {
 	}, [firstChild, secondChild, isMobile]);
 
 	return (
-		<div className="flex flex-col md:flex-row gap-3 md:gap-5 px-4 md:px-6 lg:px-10 mt-3 md:mt-0">
+		<div className="flex flex-col md:flex-row gap-3 md:gap-5 px-4 md:px-6 lg:px-10 mt-3 md:mt-0 text-cursor" data-text="View Projects">
 			<div className="flex gap-3 md:gap-5 flex-row  translate-y-0 md:flex-col" ref={firstChild}>
 				{projects.map((project, index) => {
 					if (index > 2) return null;

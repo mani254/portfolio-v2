@@ -53,6 +53,7 @@ function MainAbout() {
 			splitPara = new SplitType(p, { types: "words", tagName: "span" });
 			aboutTimeline.fromTo(splitPara.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.02, ease: "power2.out", duration: 1 }, "-=0.8");
 		}
+
 		return () => {
 			aboutTimeline.kill();
 			imageTimeline.kill();
@@ -70,9 +71,9 @@ function MainAbout() {
 					<h2 className="text-opacity-50">Hi</h2>
 				</div>
 				<div className="space-y-3 mt-3">
-					<h2 aria-label="I am Manikanta Designing impactful Solutions for Over 2 Years.">I am Manikanta Designing impactful Solutions for Over 2 Years</h2>
-					<p aria-label="I'm a developer and freelancer skilled in building user-focused websites and innovative applications. With expertise in diverse technologies, I create solutions that stand out. Let’s collaborate to make an impact and bring your ideas to life.">
-						I'm a developer and freelancer skilled in building user-focused websites and innovative applications. With expertise in diverse technologies, I create solutions that stand out. Let’s collaborate to make an impact and bring your ideas to life.
+					<h2 aria-label="I am Manikanta, Designing impactful Solutions for Over 2 Years.">I am Manikanta, Designing impactful Solutions for Over 2 Years</h2>
+					<p aria-label="I’m a developer and freelancer specializing in crafting user-focused websites and applications. My expertise lies in building modern, scalable, and impactful solutions that elevate businesses. Let’s work together to transform ideas into reality and create something exceptional.">
+						I’m a developer and freelancer specializing in crafting user-focused websites and applications. My expertise lies in building modern, scalable, and impactful solutions that elevate businesses. Let’s work together to transform ideas into reality and create something exceptional.
 					</p>
 				</div>
 			</div>
