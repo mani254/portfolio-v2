@@ -64,9 +64,11 @@ function MoreAbout() {
 	return (
 		<section className="about-section" ref={sectionRef}>
 			<div className="about-part p-0 flex flex-col md:flex-row items-center justify-center ">
-				<div className="md:max-h-96 w-full md:w-auto overflow-x-clip md:overflow-y-clip order-2 md:order-1">
-					<ScrollingProjects />
-				</div>
+				<NavLink to="/projects">
+					<div className="md:max-h-96 w-full md:w-auto overflow-x-clip md:overflow-y-clip order-2 md:order-1">
+						<ScrollingProjects />
+					</div>
+				</NavLink>
 				<div className="space-y-5 about-part order-1 md:order-2" ref={secondChildRef}>
 					<h2>Key Projects and OpenSource Contributions</h2>
 					<p aria-label="Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.">Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.</p>

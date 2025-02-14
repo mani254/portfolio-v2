@@ -16,7 +16,7 @@
 		@apply font-semibold;
 	}
 	.btn-1 {
-		@apply bg-dark text-white rounded-full py-1 px-5;
+		@apply bg-dark text-white rounded-full py-[6px] px-6;
 	}
 	p {
 		@apply text-sm text-gray-700;
@@ -69,7 +69,7 @@
 		@apply bg-white;
 	}
 	.about-page .about-section {
-		@apply w-full max-w-6xl mx-auto;
+		@apply w-full  mx-auto;
 	}
 	.about-page .about-part {
 		@apply rounded-3xl  px-4 py-6 md:px-6 md:py-8 lg:p-10;

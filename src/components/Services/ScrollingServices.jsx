@@ -3,6 +3,7 @@ import gsap from "gsap";
 import services from "../../utils/servicesArray";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NavLink } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa6";
 
 import { AppContext } from "../../App";
 
@@ -27,10 +28,11 @@ function ScrollingServices({ mainPage }) {
 						start: "top 50%",
 						end: "bottom 50%",
 						toggleActions: "play none none reverse",
-						onEnter: () => gsap.set(mainPage.current, { backgroundColor: services[index].backgroundColor }),
-						onEnterBack: () => gsap.set(mainPage.current, { backgroundColor: services[index].backgroundColor }),
-						onLeave: () => gsap.set(mainPage.current, { backgroundColor: "#FFFFFF" }),
-						onLeaveBack: () => gsap.set(mainPage.current, { backgroundColor: "#FFFFFF" }),
+						onEnter: () => gsap.to(mainPage.current, { backgroundColor: services[index].backgroundColor, duration: 0.5 }),
+						onEnterBack: () => gsap.to(mainPage.current, { backgroundColor: services[index].backgroundColor, duration: 0.5 }),
+						onLeave: () => gsap.to(mainPage.current, { backgroundColor: "#FFFFFF", duration: 0.5 }),
+						onLeaveBack: () => gsap.to(mainPage.current, { backgroundColor: "#FFFFFF", duration: 0.5 }),
+						scrub: 1, // Enables smooth transition while scrolling
 					});
 				}
 			});
@@ -130,7 +132,7 @@ function ScrollingServices({ mainPage }) {
 							scrollTrigger: {
 								trigger: el,
 								start: "top 95%",
-								end: "top 70%",
+								end: "top 80%",
 								scrub: 1,
 								markers: false, // Set to `true` for debugging
 							},
@@ -146,11 +148,11 @@ function ScrollingServices({ mainPage }) {
 	return (
 		<>
 			{isMobile ? (
-				<div className="container space-y-[100px] overflow-hidden px-7">
+				<div className="container space-y-[100px] overflow-hidden px-4">
 					{services.map((service, index) => (
-						<div key={service.id} className="rounded-3xl overflow-hidden" style={{ backgroundColor: `${service.backgroundColor}80` }} ref={(el) => el && !mobileCards.current.includes(el) && mobileCards.current.push(el)}>
+						<div key={service.id} ref={(el) => el && !mobileCards.current.includes(el) && mobileCards.current.push(el)}>
 							<div
-								className="w-full h-full  px-5 py-10 flex items-center justify-center"
+								className="w-full h-full px-5 py-10 flex items-center justify-center rounded-3xl"
 								style={{
 									backgroundColor: `${service.boxColor}77`,
 								}}>
@@ -160,10 +162,20 @@ function ScrollingServices({ mainPage }) {
 							</div>
 
 							{/* Content Section */}
-							<div className="p-6 space-y-2">
-								<h2 className="text-lg  font-bold text-gray-800">{service.title}</h2>
-								<h5 className="text-md font-medium text-gray-600">{service.subTitle}</h5>
-								<p className="text-sm text-gray-500">{service.description}</p>
+							<div className=" bg-white rounded-lg px-1 py-2">
+								<div className="flex items-center justify-between mb-4">
+									<h2 className="font-semibold text-gray-900" style={{ fontSize: "22px" }}>
+										{service.title}
+									</h2>
+									<h2 className="font-semibold  text-gray-800 flex items-center gap-2 px-4 py-1 rounded-full bg-gray-100" style={{ fontSize: "16px" }}>
+										Contact{" "}
+										<span className="-rotate-45">
+											<FaArrowRight />
+										</span>
+									</h2>
+								</div>
+								<h5 className="text-xs italic text-gray-700 mb-2 text-center">{service.subTitle}</h5>
+								<p className="text-xs text-gray-600 text-center">{service.description}</p>
 							</div>
 						</div>
 					))}
@@ -182,7 +194,7 @@ function ScrollingServices({ mainPage }) {
 										<p>{service.description}</p>
 										<NavLink to="/contact" className="pt-3 inline-block move-over">
 											<button className="w-full md:w-auto flex-list-button">
-												<span>Contact Us</span>
+												<span className="px-7 py-1 inline-block">Contact Us</span>
 											</button>
 										</NavLink>
 									</div>

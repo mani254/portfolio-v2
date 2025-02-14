@@ -22,7 +22,7 @@ const PageTransition = ({ children }) => {
 
 		tl.fromTo(layer1Ref.current, { y: "85%", borderRadius: "600px" }, { y: "0%", borderRadius: 0, duration: 0.8, ease: "power4.out" }, 0);
 		// tl.fromTo(layer2Ref.current, { y: "95%", borderRadius: "400px" }, { y: "0%", borderRadius: 0, duration: 0.8, ease: "power4.out" }, 0.2);
-		tl.fromTo(layer3Ref.current, { y: "100%", borderRadius: "200px" }, { y: "0%", duration: 0.8, borderRadius: "50px", ease: "power4.out" }, 0.3);
+		tl.fromTo(layer3Ref.current, { y: "100%", borderRadius: "1200px" }, { y: "0%", duration: 0.8, borderRadius: "50px", ease: "power4.out" }, 0.3);
 		tl.to(wrapperRef.current, { opacity: 0, duration: 0.3 }, "-=0.5");
 		tl.fromTo(pageRef.current, { y: 50 }, { y: 0, duration: 0.5, ease: "power2.out" }, "-=0.5");
 

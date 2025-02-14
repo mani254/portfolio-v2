@@ -68,7 +68,7 @@ function BreadCrumb({ subtitle, title }) {
 			<p ref={subTitleRef} className="text-md md:text-lg inline-block text-zinc-600 border-b border-zinc-600">
 				{subtitle}
 			</p>
-			<h1 ref={headingRef} className="mt-10 text-xl md:text-2xl" aria-label={title}>
+			<h1 ref={headingRef} className="mt-10 text-md md:text-2xl" aria-label={title}>
 				{title}
 			</h1>
 		</div>

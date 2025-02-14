@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import BreadCrumb from "../components/Utils/BreadCrumb";
 import ServiceImage from "../components/Services/ServiceImage";
 import ScrollingServices from "../components/Services/ScrollingServices";
+import Cta from "../components/Cta/Cta";
 
 function ServicesPage() {
 	const servicePageRef = useRef(null);
@@ -16,6 +17,7 @@ function ServicesPage() {
 				<ScrollingServices mainPage={servicePageRef} />
 			</div>
 			<div className="h-[600px]"></div>
+			<Cta />
 		</div>
 	);
 }

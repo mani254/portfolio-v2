@@ -1,63 +1,67 @@
 import { about1, about2, about3, about4, about5, about6 } from ".";
 
+import service1 from "../assets/services/web-development.png";
+import service2 from "../assets/services/web-design.png";
+import service3 from "../assets/services/seo-service.png";
+import service4 from "../assets/services/graphic-design.png";
+import service5 from "../assets/services/app-development.png";
 
 const services = [
    {
       id: "web-development",
       title: "Web Development",
-      subTitle: "Building Scalable and High-Performance Websites",
-      description: "We build scalable, high-performance websites tailored to your business, ensuring smooth user experiences with the latest technologies.",
-      image: about1,
-      backgroundColor: "#FAE1EE",
-      boxColor: "#F9D1E6",
-      cursorColor: "#EC98C2",
-      boxShadow: "0px 12px 27px #EC98C2"
+      subTitle: "Fast, Scalable, and Reliable Websites",
+      description: "We build fast, scalable websites using modern frameworks, ensuring smooth performance and an excellent user experience across all devices.",
+      image: service1,
+      backgroundColor: "#F8BBD0",
+      boxColor: "#F48FB1",
+      cursorColor: "#E91E63",
+      boxShadow: "0px 10px 28px rgba(233, 30, 99, 0.5)",
    },
    {
       id: "web-design",
       title: "Web Design",
-      subTitle: "Creative and User-Friendly Designs",
-      description: "We create visually appealing, user-friendly designs that enhance engagement and strengthen your brand’s online presence.",
-      image: about2,
-      backgroundColor: "#E0F0FF",
-      boxColor: "#CDD1FF",
-      cursorColor: "#6B75D1",
-      boxShadow: "0px 12px 27px #6B75D1"
+      subTitle: "Creative, Modern, and User-Friendly Designs",
+      description: "We craft stunning, user-friendly designs that enhance engagement, ensuring an intuitive and visually appealing digital presence for your brand.",
+      image: service2,
+      backgroundColor: "#D1C4E9",
+      boxColor: "#9575CD",
+      cursorColor: "#673AB7",
+      boxShadow: "0px 10px 28px rgba(103, 58, 183, 0.5)",
    },
    {
       id: "seo-services",
       title: "SEO Services",
-      subTitle: "Boost Your Online Visibility",
-      description: "Our SEO strategies improve your site’s ranking and visibility, driving more targeted traffic to grow your business online.",
-      image: about3,
-      backgroundColor: "#FFEDE0",
-      boxColor: "#FCD2AF",
-      cursorColor: "#E89A63",
-      boxShadow: "0px 12px 27px #E89A63"
+      subTitle: "Increase Traffic and Improve Rankings",
+      description: "We optimize your website with advanced SEO strategies, improving search engine rankings, increasing visibility, and driving targeted traffic to your business.",
+      image: service3,
+      backgroundColor: "#FFCC80",
+      boxColor: "#FFB74D",
+      cursorColor: "#F57C00",
+      boxShadow: "0px 10px 28px rgba(245, 124, 0, 0.5)",
    },
    {
       id: "graphic-design",
       title: "Graphic Design",
-      subTitle: "Crafting Visual Masterpieces",
-      description: "We design logos and marketing materials that leave a lasting impression, elevating your brand’s identity.",
-      image: about4,
-      backgroundColor: "#EDE0FF",
-      boxColor: "#D1BFFC",
-      cursorColor: "#7A4FB5",
-      boxShadow: "0px 12px 27px #7A4FB5"
+      subTitle: "Unique, Engaging, and Impactful Designs",
+      description: "We create stunning visuals, logos, and branding materials that capture attention, effectively representing your brand’s identity with creative designs.",
+      image: service4,
+      backgroundColor: "#E1BEE7",
+      boxColor: "#CE93D8",
+      cursorColor: "#8E24AA",
+      boxShadow: "0px 10px 28px rgba(142, 36, 170, 0.5)",
    },
    {
       id: "app-development",
       title: "App Development",
-      subTitle: "Innovative Mobile Solutions",
-      description: "We develop custom mobile apps that deliver seamless performance and exceptional user experiences.",
-      image: about5,
-      backgroundColor: "#FFF0E0",
-      boxColor: "#FFD1AF",
-      cursorColor: "#E69563",
-      boxShadow: "0px 12px 27px #E69563"
+      subTitle: "High-Performance, Secure, and Scalable Apps",
+      description: "We build secure, high-performance mobile apps with seamless user experiences, ensuring cross-platform compatibility and robust functionality for businesses.",
+      image: service5,
+      backgroundColor: "#BBDEFB",
+      boxColor: "#64B5F6",
+      cursorColor: "#1E88E5",
+      boxShadow: "0px 10px 28px rgba(30, 136, 229, 0.5)",
    },
 ];
 
 export default services;
-

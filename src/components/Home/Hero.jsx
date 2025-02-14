@@ -43,7 +43,7 @@ function Hero() {
 		splitTitle = new SplitType(titleRef.current, { types: "words", tagName: "span" });
 		splitPara = new SplitType(textRef.current, { types: "words", tagName: "span" });
 
-		tl.fromTo(splitTitle.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 });
+		tl.fromTo(splitTitle.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1, delay: "0.5" });
 
 		tl.fromTo(splitPara.words, { x: 20, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.03, ease: "power2.out", duration: 1 }, "+=0.5");
 
@@ -92,14 +92,24 @@ function Hero() {
 						I am <br />
 						<span class="whitespace-nowrap">Sai Manikanta</span>
 					</h3>
-					{/* <h4 className="mt-3 py-1 px-5 rounded-full border border-dark inline-block">Web Developer</h4> */}
 				</div>
-				{/* <div className="stroke-text text-4xl w-full font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center" ref={headingRef}>
-					MERN Stack Developer
-				</div> */}
-				<div className="text-4xl w-full min-h-60  font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-					<ParticleText textLines={["MERN Stack", "Developer"]} fontSizeMultiplier={10} minFontSize={48} maxFontSize={68} particleColor="#8f8f8f" />
+
+				<div className="text-4xl w-full min-h-60 font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+					<ParticleText
+						textGroups={[
+							["MERN Stack", "Developer"],
+							["Software", "Developer"],
+							["UI/Ux", "Designer"],
+							["Web", "Developer"],
+						]}
+						fontSizeMultiplier={10}
+						minFontSize={48}
+						maxFontSize={68}
+						particleColor="#8f8f8f"
+						cycleInterval={5000} // Adjust text switch interval (milliseconds)
+					/>
 				</div>
+
 				<p className="absolute right-1/2 translate-x-1/2 lg:right-12 lg:translate-x-0  bottom-12 w-full max-w-[364px] font-medium text-md text-center lg:text-start" ref={textRef} aria-label="I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.">
 					I create trend-driven, interactive websites that bring your ideas to life and transform them into unforgettable digital experiences.
 				</p>

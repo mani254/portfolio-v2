@@ -80,7 +80,7 @@ function Cursor() {
 	};
 
 	const handleMouseEnter = () => {
-		updateCursorStyles("50px", "50px", "difference", "white");
+		updateCursorStyles("70px", "70px", "difference", "white");
 	};
 
 	const handleMouseLeave = () => {
