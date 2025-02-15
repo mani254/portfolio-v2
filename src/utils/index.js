@@ -68,7 +68,9 @@ import xColor from '../assets/social-media/x-2.svg'
 import youtubeColor from '../assets/social-media/youtube.svg'
 
 
+export const services = ['Single Page Website', 'Ui/Ux design', 'Poster Desgin', 'Multiple Page Website', 'Fontend-Application', "Backend-Application", 'E-Commerce Website', '0ther']
 
+export const budgets = ['5-15k', '15-30k', '30-40k', '40-70k', '70-90k', '+100k']
 
 export { logoSvg, profile }
 
@@ -92,7 +94,7 @@ export { fingers }
 
 
 const socialMedia = [
-   { image: instagramColor, alt: "instagram svg", link: "https://www.instagram.com/code_addict21/" },
+   { image: instagramColor, alt: "instagram svg", link: "https://www.instagram.com/dev_mani25/" },
    { image: xColor, alt: "x svg", link: "https://x.com/Manikanta_425" },
    { image: youtubeColor, alt: "youtube svg", link: "https://www.youtube.com/channel/UCCdkYdNdJYuyQx_ky5GTvYg" },
    { image: linkedincolor, alt: "linkedin svg", link: "https://www.linkedin.com/in/sai0421/" },

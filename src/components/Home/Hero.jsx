@@ -72,7 +72,7 @@ function Hero() {
 					{/* <a href="#">
 						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={discord} alt="discord svg icon" />
 					</a> */}
-					<a className="hover-link" href="https://www.instagram.com/code_addict21/" target="_blank">
+					<a className="hover-link" href="https://www.instagram.com/dev_mani25/" target="_blank">
 						<img className="w-7 hover:scale-125 transition-transform duration-300 ease-in-out" src={instagram} alt="instagram svg icon" />
 					</a>
 					<a className="hover-link" href="https://x.com/Manikanta_425" target="_blank">

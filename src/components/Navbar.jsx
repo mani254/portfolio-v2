@@ -129,7 +129,7 @@ function Navbar() {
 							</a>
 						</div>
 						<div ref={(el) => (fadeInUp2.current[3] = el)}>
-							<a href="https://www.instagram.com/code_addict21/" target="_blank">
+							<a href="https://www.instagram.com/dev_mani25/" target="_blank">
 								<p className="text-sm font-medium  has-c-over inline-block">Instagram</p>
 							</a>
 						</div>

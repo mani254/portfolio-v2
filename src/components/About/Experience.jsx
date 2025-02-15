@@ -128,7 +128,7 @@ function Experience() {
 						<div className={` rounded-xl w-10 h-10 shadow-sm bg-white p-1 absolute top-2 right-2`}>
 							<img className="w-full h-full" src={instagramColoured} alt="instagram coloured svg icon" />
 						</div>
-						<a href="https://www.instagram.com/code_addict21/" target="_blank">
+						<a href="https://www.instagram.com/dev_mani25/" target="_blank">
 							<div className="absolute w-full h-full bg-dark bg-opacity-0 inset-0 flex flex-col items-center justify-center gap-3 group-hover:bg-opacity-70 transition-all duration-400">
 								<img src={instagramFilled} className="scale-[1.4] rotate-45 opacity-0 group-hover:rotate-0 group-hover:scale-[1] group-hover:opacity-100 transition-all duration-200 delay-150" alt="insgram filled icon" />
 								<h5 className="text-center text-white scale-[1.3] opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-[1] transition-all duration-200 delay-200">Follow Me On Instagram</h5>
