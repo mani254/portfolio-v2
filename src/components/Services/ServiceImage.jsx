@@ -37,7 +37,7 @@ function ServiceImage() {
 	}, [imageRef, imageLoaded, outerRef]);
 
 	return (
-		<div className="w-full  h-[250px] md:h-[350px] bg-gray-200 rounded-2xl m-auto relative overflow-hidden" ref={outerRef}>
+		<div className="w-full  h-[230px] md:h-[350px] bg-gray-200 rounded-2xl m-auto relative overflow-hidden" ref={outerRef}>
 			<img ref={imageRef} src={mainService} alt="Developer services setup" onLoad={handleLoad} style={{ objectFit: "cover" }} className="absolute w-full h-[500px]  md:h-fullscale-[1.6] md:scale-100" />
 		</div>
 	);

@@ -13,8 +13,8 @@ function Navbar() {
 	const fadeInUp2 = useRef([]);
 	const fadeInUp3 = useRef([]);
 
-	const { options } = useContext(AppContext);
-	const { isMobile } = options;
+	const { options, setOptions } = useContext(AppContext);
+	const { isMobile, isNavDark } = options;
 
 	const toggleMenu = useCallback(() => {
 		setMenuActive((prev) => !prev);
@@ -68,28 +68,38 @@ function Navbar() {
 
 	return (
 		<nav className="container flex items-center justify-between pt-2 sticky top-0 z-40">
-			<div className="logo  h-[55px] p-2 glass-effect rounded-md relative z-30 px-3">
-				<NavLink to="/" className="flex gap-2 items-center">
-					<img src={logoSvg} className="w-[55px]" alt="Manidev-developer-logo" />
-					<div>
-						<p className="font-bold text-md leading-5">Mani</p>
-						<p className="tracking-widest text-xs leading-5">Developer</p>
+			<div className="logo  glass-effect rounded-xl relative z-30 px-3 py-2 ">
+				<NavLink to="/" className="flex items-center justify-center">
+					<div className="flex gap-2 items-center">
+						<img src={logoSvg} className="w-[50px]" alt="Manidev-developer-logo" />
+						<div>
+							<p className={`font-bold text-md leading-5 inverted-text ${isNavDark && "text-gray-200"}`}>Mani</p>
+							<p className={`tracking-widest text-xs leading-5 ${isNavDark && "text-gray-200"}`}>Developer</p>
+						</div>
 					</div>
 				</NavLink>
 			</div>
 
 			<ul className="hidden md:flex items-center gap-8 glass-effect py-2 px-6 rounded-full font-semibold ml-[100px] relative z-2">
 				<li className="hover-link">
-					<NavLink to="/">Home</NavLink>
+					<NavLink className={`${isNavDark && "text-gray-200"}`} to="/">
+						Home
+					</NavLink>
 				</li>
 				<li className="hover-link">
-					<NavLink to="/about">About</NavLink>
+					<NavLink className={`${isNavDark && "text-gray-200"}`} to="/about">
+						About
+					</NavLink>
 				</li>
 				<li className="hover-link">
-					<NavLink to="/services">Services</NavLink>
+					<NavLink className={`${isNavDark && "text-gray-200"}`} to="/services">
+						Services
+					</NavLink>
 				</li>
 				<li className="hover-link">
-					<NavLink to="/projects">Projects</NavLink>
+					<NavLink className={`${isNavDark && "text-gray-200"}`} to="/projects">
+						Projects
+					</NavLink>
 				</li>
 				{/* <li>
 					<NavLink to="/blogs">Blogs</NavLink>
@@ -101,8 +111,8 @@ function Navbar() {
 					<button className="btn-1">Contact</button>
 				</NavLink>
 				<button className={`hover-link group hamburger w-9 h-8 flex justify-evenly flex-col items-end relative ${menuActive && "active"}`} onClick={toggleMenu}>
-					<span className="w-full h-1 rounded bg-dark block absolute transition-all duration-200 -translate-y-[5px]"></span>
-					<span className="h-1 rounded bg-dark block w-[75%] absolute transition-all duration-200 translate-y-[5px]"></span>
+					<span className={`w-full h-1 rounded ${isNavDark ? "bg-gray-200" : "bg-dark"} block absolute transition-all duration-200 -translate-y-[5px]`}></span>
+					<span className={`h-1 rounded ${isNavDark ? "bg-gray-200" : "bg-dark"} block w-[75%] absolute transition-all duration-200 translate-y-[5px]`}></span>
 				</button>
 			</div>
 
@@ -153,22 +163,22 @@ function Navbar() {
 					<ul className="space-y-7">
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[0] = el)}>
 							<NavLink to="/">
-								<h2 className="has-c-over  sm:font-xl md:font-semibold text-2xl">Home</h2>
+								<h2 className="has-c-over   text-xl sm:text-2xl md:font-semibold ">Home</h2>
 							</NavLink>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[1] = el)}>
 							<NavLink to="/about">
-								<h2 className="has-c-over sm:font-xl md:font-semibold text-2xl">About</h2>
+								<h2 className="has-c-over  text-xl sm:text-2xl md:font-semibold ">About</h2>
 							</NavLink>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[2] = el)}>
 							<NavLink to="/services">
-								<h2 className="has-c-over sm:font-xl md:font-semibold text-2xl">Services</h2>
+								<h2 className="has-c-over  text-xl sm:text-2xl md:font-semibold ">Services</h2>
 							</NavLink>
 						</li>
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[3] = el)}>
 							<NavLink to="/projects">
-								<h2 className="has-c-over sm:font-xl md:font-semibold text-2xl">Projects</h2>
+								<h2 className="has-c-over  text-xl sm:text-2xl md:font-semibold ">Projects</h2>
 							</NavLink>
 						</li>
 						{/* <li className="text-sm" ref={(el) => (fadeInUp3.current[4] = el)}>
@@ -176,7 +186,7 @@ function Navbar() {
 						</li> */}
 						<li className="text-sm" ref={(el) => (fadeInUp3.current[6] = el)}>
 							<NavLink to="/contact">
-								<h2 className="has-c-over sm:font-xl md:font-semibold text-2xl">Contact</h2>
+								<h2 className="has-c-over  text-xl sm:text-2xl md:font-semibold ">Contact</h2>
 							</NavLink>
 						</li>
 					</ul>

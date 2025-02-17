@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 /* =================================
       css for the hamburger 
 ===================================== */
@@ -198,4 +199,81 @@
 
 .gradient-left {
 	background-image: linear-gradient(to left, #f3f4f6, #fff2);
+}
+
+/*------------------------ cta social bg animation ----------------- */
+
+.show-box {
+	position: relative;
+	cursor: pointer;
+}
+.show-box * {
+	z-index: 10;
+}
+.show-box::before,
+.show-box::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 0%; /* Initially hidden */
+	background-color: #f1f1f1;
+	transition: height 0.3s ease-out;
+	z-index: 0;
+}
+
+/* Top Cover */
+.show-box::before {
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+/* Bottom Cover */
+.show-box::after {
+	bottom: 50%;
+	left: 0;
+	transform: translateY(50%);
+}
+
+/* Hover Effect */
+.show-box:hover::before,
+.show-box:hover::after {
+	height: 100%;
+}
+
+.spl-text {
+	font-family: "Pacifico", serif;
+	font-weight: 400;
+	font-style: normal;
+	color: #397c6f;
+}
+
+.radial-black {
+	background: radial-gradient(circle, transparent 40%, rgba(30, 30, 30, 0.3) 60%, rgba(10, 10, 10, 1) 100%);
+}
+
+.download {
+	padding: 12px 22px;
+	border: none;
+	color: rgb(220, 220, 220);
+	cursor: pointer;
+	background-color: rgb(45, 45, 45);
+	border-radius: 30px;
+	font-weight: bold;
+	/* transition: 0.5s; */
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	font-size: 13px;
+	box-shadow: rgba(150, 143, 143, 0.2) 0px 2px 8px 0px;
+}
+
+.download:hover {
+	background-color: rgb(60, 60, 60);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.saveicon {
+	width: 17px;
+	color: rgb(220, 220, 220);
 }

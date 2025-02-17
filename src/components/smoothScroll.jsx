@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { useLocation } from "react-router-dom";
+import { AppContext } from "../App";
 
 const SmoothScroll = ({ children }) => {
 	const lenisRef = useRef();
 	const location = useLocation();
+	const { options, setOptions } = useContext(AppContext);
 
 	useEffect(() => {
 		function update(time) {
@@ -21,6 +23,7 @@ const SmoothScroll = ({ children }) => {
 
 	useEffect(() => {
 		lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+		setOptions((prev) => ({ ...prev, isNavDark: false }));
 	}, [location.pathname]);
 
 	return (

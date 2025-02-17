@@ -58,7 +58,7 @@ function Cursor() {
 				const deltaX = adjustedX - centerX;
 				const deltaY = adjustedY - centerY;
 				const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-				const maxDistance = 17;
+				const maxDistance = 20;
 
 				const moveX = (deltaX / distance) * Math.min(distance, maxDistance);
 				const moveY = (deltaY / distance) * Math.min(distance, maxDistance);

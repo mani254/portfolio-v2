@@ -29,6 +29,8 @@ function App() {
 		isDark: false,
 	});
 
+	// console.log("hello");
+
 	// useEffect to handle resize and set the isMobile in the options
 	useEffect(() => {
 		function handleResize() {
@@ -43,8 +45,8 @@ function App() {
 	}, []);
 
 	return (
-		<SmoothScroll>
-			<AppContext.Provider value={{ options, setOptions }}>
+		<AppContext.Provider value={{ options, setOptions }}>
+			<SmoothScroll>
 				<Cursor />
 				<Navbar />
 				<HelmetProvider>
@@ -100,8 +102,8 @@ function App() {
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</HelmetProvider>
-			</AppContext.Provider>
-		</SmoothScroll>
+			</SmoothScroll>
+		</AppContext.Provider>
 	);
 }
 

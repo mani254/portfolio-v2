@@ -1,49 +1,57 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+// gsap.registerPlugin(ScrollTrigger);
 
 function ProjectCard({ title, description, link, image, index }) {
-	const imageRef = useRef(null);
-	const cardRef = useRef(null);
+	const imageRefs = useRef([]);
+	const cardRefs = useRef([]);
 
 	useEffect(() => {
-		if (!cardRef.current || !imageRef.current) return;
+		if (!cardRefs.current[index] || !imageRefs.current[index]) return;
 
-		const imageAnimation = gsap.to(imageRef.current, {
-			y: 150,
+		const imageAnimation = gsap.to(imageRefs.current[index], {
+			y: 120,
 			scrollTrigger: {
-				trigger: imageRef.current,
+				trigger: imageRefs.current[index],
 				start: "top bottom",
 				end: "bottom top",
-				scrub: true,
+				scrub: 0.5,
+				// markers: true,
 			},
-			ease: "sine.out",
+			ease: "sine.in",
 		});
 
-		const cardAnimation = gsap.to(cardRef.current, {
-			y: -150,
+		const cardAnimation = gsap.to(cardRefs.current[index], {
+			y: -120,
 			scrollTrigger: {
-				trigger: cardRef.current,
+				trigger: cardRefs.current[index],
 				start: "top bottom",
 				end: "bottom top",
-				scrub: true,
+				scrub: 0.5,
+				// markers: true,
 			},
-			ease: "sine.out",
+			ease: "sine.in",
 		});
 
 		return () => {
 			imageAnimation.kill();
 			cardAnimation.kill();
 		};
-	}, [cardRef, imageRef]);
+	}, [index]); // Re-run only for this specific card
 
+	console.log(link);
 	return (
-		<div ref={cardRef} className="shadow-md overflow-hidden rounded-xl">
-			<div className="relative h-[300px] overflow-hidden  text-cursor" data-text="View Project">
-				<img ref={imageRef} src={image} alt="Project" className="w-full h-full scale-[1.7] object-cover object-center" />
-			</div>
-			<div className="p-4 py-6">
+		<div ref={(el) => (cardRefs.current[index] = el)} className="overflow-hidden rounded-3xl shadow-xl bg-white p-3 md:p-6">
+			<Link to={link} className="block" target="_blank">
+				<div className="relative h-[270px] md:h-[320px] rounded-2xl shadow-md overflow-hidden text-cursor" data-text="View Project">
+					<img ref={(el) => (imageRefs.current[index] = el)} src={image} alt="Project" className="w-full h-full object-cover object-center scale-[1.3]" />
+				</div>
+			</Link>
+			<div className="py-6 px-2">
 				<h2 className="mb-2">{title}</h2>
-				<p className="">{description}</p>
+				<p>{description}</p>
 			</div>
 		</div>
 	);

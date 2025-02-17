@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import SplitType from "split-type";
 import gsap from "gsap";
 
 function debounce(func, wait) {
@@ -10,9 +9,11 @@ function debounce(func, wait) {
 	};
 }
 
-function BreadCrumb({ subtitle, title }) {
+function BreadCrumb({ subtitle, title, highlightedText }) {
 	const subTitleRef = useRef(null);
 	const headingRef = useRef(null);
+	const spanRef = useRef(null);
+	const textRef = useRef(null);
 	const wrapperRef = useRef(null);
 	const [width, setWidth] = useState(window.innerWidth);
 
@@ -39,8 +40,9 @@ function BreadCrumb({ subtitle, title }) {
 
 			timeline.fromTo(subTitleRef.current, { opacity: 0.1, x: 40 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" });
 
-			const splitHeading = new SplitType(headingRef.current, { types: "lines" });
-			timeline.fromTo(splitHeading.lines, { opacity: 0.1, y: 20 }, { opacity: 1, y: 0, stagger: 0.2, duration: 0.6, ease: "power2.out" }, "-=0.3");
+			// Animate the span and text separately
+			timeline.fromTo(spanRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
+			timeline.fromTo(textRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.2");
 		};
 
 		setupAnimation();
@@ -64,12 +66,17 @@ function BreadCrumb({ subtitle, title }) {
 	}, [width]);
 
 	return (
-		<div className="mt-10 py-14 md:mt-0 md:py-20" ref={wrapperRef}>
+		<div className="mt-10 py-14  md:mt-0 md:py-20 mb-20 " ref={wrapperRef}>
 			<p ref={subTitleRef} className="text-md md:text-lg inline-block text-zinc-600 border-b border-zinc-600">
 				{subtitle}
 			</p>
-			<h1 ref={headingRef} className="mt-10 text-md md:text-2xl" aria-label={title}>
-				{title}
+			<h1 ref={headingRef} className="mt-10">
+				<span ref={spanRef} className="inline-block text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0FA0D6] via-[#2C47B0] to-[#D753AD] bg-clip-text text-transparent">
+					{highlightedText}
+				</span>
+				<span ref={textRef} className="block text-2xl md:text-3xl">
+					{title.replace(highlightedText, "")}
+				</span>
 			</h1>
 		</div>
 	);

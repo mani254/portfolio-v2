@@ -1,55 +1,54 @@
-import about1 from '../assets/home/about/about-1.webp'
-import about2 from '../assets/home/about/about-2.webp'
-import about3 from '../assets/home/about/about-3.webp'
-import about4 from '../assets/home/about/about-4.webp'
-import about5 from '../assets/home/about/about-5.webp'
-import about6 from '../assets/home/about/about-6.webp'
-
+import miniFlicks from '../assets/projects/miniflicks.webp';
+import maniDevPortfolio from '../assets/projects/portfolio.webp';
+import retailPOS from '../assets/projects/pos.webp';
+import f2d from '../assets/projects/f2d.webp';
+import iphoneClone from '../assets/projects/iphone.webp';
+import corellic from '../assets/projects/corellic.webp';
+import editorify from '../assets/projects/editorify.webp'
 
 const projects = [
    {
-      title: "Sander",
-      description: "Sander is a platform that creates customized digital identities, empowering individuals and businesses to manage their online presence and adapt to digital needs with ease.",
-      link: "/project/sander",
-      image: about1,
+      title: "MiniFlicks Private Theatre Booking",
+      description: "A private theatre booking platform with multi-branch admin control, real-time booking updates, automated email notifications, and a secure transaction backend.",
+      link: "https://www.miniflicks.in/",
+      image: miniFlicks,
    },
    {
-      title: "Project X",
-      description: "Project X is an innovative initiative focused on tackling tech challenges by integrating AI, blockchain, and cloud computing to drive business efficiency and security.",
-      link: "/project/project-x",
-      image: about2,
+      title: "ManiDev Portfolio",
+      description: "A story-driven personal portfolio showcasing expertise in modern web development, featuring an interactive UI, smooth animations, and a performance-optimized design.",
+      link: "https://www.manidev.in/",
+      image: maniDevPortfolio,
    },
    {
-      title: "Visionary",
-      description: "Visionary helps businesses leverage data and insights to optimize processes, drive innovation, and maintain a competitive edge in a rapidly changing market.",
-      link: "/project/visionary",
-      image: about3,
+      title: "Retail Store POS System",
+      description: "A feature-rich POS system enabling streamlined billing, real-time inventory tracking, and sales analytics. Enhanced UI/UX for an intuitive experience.",
+      link: "https://boutique-pos-frontend.netlify.app",
+      image: retailPOS,
    },
    {
-      title: "TechyWave",
-      description: "TechyWave aims to simplify web development by embracing the latest technologies, creating scalable, high-performance web applications for the digital future.",
-      link: "/project/techywave",
-      image: about4,
+      title: "F2D (Factory to Door)",
+      description: "A real-time order tracking system with dynamic animations, focusing on efficiency, user engagement, and a polished UI.",
+      link: "https://factory2door.co.uk/",
+      image: f2d,
    },
    {
-      title: "AI Insights",
-      description: "AI Insights uses artificial intelligence to uncover actionable business insights, enabling organizations to make data-driven decisions and predict future trends.",
-      link: "/project/ai-insights",
-      image: about5,
+      title: "iPhone 15 Pro Clone",
+      description: "A pixel-perfect iPhone 15 Pro clone built with smooth animations and a high-performance UI, ensuring responsiveness and design accuracy.",
+      link: "https://iphone-15-pro-webclone.netlify.app/",
+      image: iphoneClone,
    },
    {
-      title: "EcoWorld",
-      description: "EcoWorld provides sustainable solutions, helping businesses reduce their environmental footprint and improve efficiency by utilizing renewable energy and eco-friendly practices.",
-      link: "/project/ecoworld",
-      image: about6,
+      title: "Corelic (Open Source Project)",
+      description: "An open-source project similar to Shopify that provides backend API support for e-commerce stores, offering excellent UI and full management control.",
+      link: "https://www.github.com/mani254/corelic",
+      image: corellic,
    },
    {
-      title: "Healthify",
-      description: "Healthify offers personalized wellness plans, combining fitness tracking, nutrition guidance, and mental health resources to help users lead healthier lives.",
-      link: "/project/healthify",
-      image: about1,
+      title: "Editorify (Open Source NPM Package)",
+      description: "An NPM package offering reusable components for React applications, helping developers speed up UI development with prebuilt, customizable elements.",
+      link: "https://www.npmjs.com/package/editorify-dev",
+      image: editorify,
    },
-
 ];
 
 export default projects;

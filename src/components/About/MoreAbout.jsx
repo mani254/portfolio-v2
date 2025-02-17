@@ -72,11 +72,23 @@ function MoreAbout() {
 				<div className="space-y-5 about-part order-1 md:order-2" ref={secondChildRef}>
 					<h2>Key Projects and OpenSource Contributions</h2>
 					<p aria-label="Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.">Explore my contributions, including the Editorify-Dev npm package and a Shopify-like e-commerce backend platform. I’ve also delivered tailored solutions to individual clients, ensuring their digital success.</p>
-					<NavLink to="/projects" className="inline-block move-over">
-						<button className="w-full md:w-auto flex-list-button">
-							<span>See all Projects</span>
-						</button>
-					</NavLink>
+
+					<div className="flex items-center  gap-5">
+						<NavLink to="/projects" className="inline-block move-over">
+							<button className="w-full md:w-auto flex-list-button">
+								<span>See all Projects</span>
+							</button>
+						</NavLink>
+
+						<a href="/saimanikanta.pdf" target="_blank" downlaod>
+							<button class="download move-over">
+								<svg class="saveicon" stroke="rgb(220, 220, 220)" stroke-width="1.7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" stroke-linejoin="round" stroke-linecap="round"></path>
+								</svg>
+								Resume
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 		</section>
